@@ -11,7 +11,7 @@ let _lp_func_toString = Object.assign(Function.prototype.toString);
 let _lp_obj_toString = Object.assign(Object.prototype.toString);
 
 
-
+// hook 函数toString检测
 Function.prototype.toString = function () {
     // h_log(this)
     if(_lp_func_toString.call(this).includes("open")){
@@ -25,6 +25,7 @@ Function.prototype.toString = function () {
         return _lp_func_toString.call(this)
 };
 
+// hook 对象toString检测
 Object.prototype.toString = function () {
     h_log("Object toString 被调用")
     h_log("对象为：" + _lp_obj_toString.call(this))

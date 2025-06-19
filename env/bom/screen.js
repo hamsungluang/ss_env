@@ -45,12 +45,12 @@ Object.defineProperty(_screen.__proto__, "orientation", {
         h_log("_screen.__proto__ orientation get [call]", "arg:", arguments)
     }, set: undefined, enumerable: true, configurable: true,
 });
-Screen = function () {
+let _Screen = function () {
     h_log("_screen.__proto__ constructor value [call]", "arg:", arguments)
 };
-Screen.prototype = _screen.__proto__;
+_Screen.prototype = _screen.__proto__;
 Object.defineProperty(_screen.__proto__, "constructor", {
-    value: Screen,
+    value: _Screen,
     writable: true,
     enumerable: false,
     configurable: true,

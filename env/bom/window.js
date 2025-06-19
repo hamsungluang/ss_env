@@ -856,9 +856,7 @@ Object.defineProperty(window, "ScreenOrientation", {
 Object.defineProperty(window, "Screen", {
     get: function () {
         h_log("[v] window Screen value [get]", "arg:", arguments);
-        return function () {
-            h_log("[v] window Screen value [call]", "arg:", arguments)
-        }
+        return _Screen
     }, enumerable: false, configurable: true
 });
 Object.defineProperty(window, "Scheduling", {
@@ -4773,6 +4771,7 @@ Object.defineProperty(window, "external", {
 Object.defineProperty(window, "screen", {
     get: function () {
         h_log("window screen get [call]", "arg:", arguments)
+        return _screen
     }, set: function () {
         h_log("window screen set [call]", "arg:", arguments)
     }, enumerable: true, configurable: true,
