@@ -176,9 +176,7 @@ Object.defineProperty(window, "XMLHttpRequestEventTarget", {
 Object.defineProperty(window, "XMLHttpRequest", {
     get: function () {
         h_log("[v] window XMLHttpRequest value [get]", "arg:", arguments);
-        return function () {
-            h_log("[v] window XMLHttpRequest value [call]", "arg:", arguments)
-        }
+        return _XMLHttpRequest
     }, enumerable: false, configurable: true
 });
 Object.defineProperty(window, "XMLDocument", {
@@ -298,14 +296,6 @@ Object.defineProperty(window, "WebGLSampler", {
         h_log("[v] window WebGLSampler value [get]", "arg:", arguments);
         return function () {
             h_log("[v] window WebGLSampler value [call]", "arg:", arguments)
-        }
-    }, enumerable: false, configurable: true
-});
-Object.defineProperty(window, "WebGLRenderingContext", {
-    get: function () {
-        h_log("[v] window WebGLRenderingContext value [get]", "arg:", arguments);
-        return function () {
-            h_log("[v] window WebGLRenderingContext value [call]", "arg:", arguments)
         }
     }, enumerable: false, configurable: true
 });
@@ -437,14 +427,6 @@ Object.defineProperty(window, "VTTCue", {
         }
     }, enumerable: false, configurable: true
 });
-Object.defineProperty(window, "UserActivation", {
-    get: function () {
-        h_log("[v] window UserActivation value [get]", "arg:", arguments);
-        return function () {
-            h_log("[v] window UserActivation value [call]", "arg:", arguments)
-        }
-    }, enumerable: false, configurable: true
-});
 Object.defineProperty(window, "URLSearchParams", {
     get: function () {
         h_log("[v] window URLSearchParams value [get]", "arg:", arguments);
@@ -466,6 +448,7 @@ Object.defineProperty(window, "URL", {
         h_log("[v] window URL value [get]", "arg:", arguments);
         return function () {
             h_log("[v] window URL value [call]", "arg:", arguments)
+            return {protocol:"http"}
         }
     }, enumerable: false, configurable: true
 });
@@ -845,26 +828,10 @@ Object.defineProperty(window, "ScriptProcessorNode", {
         }
     }, enumerable: false, configurable: true
 });
-Object.defineProperty(window, "ScreenOrientation", {
-    get: function () {
-        h_log("[v] window ScreenOrientation value [get]", "arg:", arguments);
-        return function () {
-            h_log("[v] window ScreenOrientation value [call]", "arg:", arguments)
-        }
-    }, enumerable: false, configurable: true
-});
 Object.defineProperty(window, "Screen", {
     get: function () {
         h_log("[v] window Screen value [get]", "arg:", arguments);
         return _Screen
-    }, enumerable: false, configurable: true
-});
-Object.defineProperty(window, "Scheduling", {
-    get: function () {
-        h_log("[v] window Scheduling value [get]", "arg:", arguments);
-        return function () {
-            h_log("[v] window Scheduling value [call]", "arg:", arguments)
-        }
     }, enumerable: false, configurable: true
 });
 Object.defineProperty(window, "Scheduler", {
@@ -1990,9 +1957,7 @@ Object.defineProperty(window, "PointerEvent", {
 Object.defineProperty(window, "PluginArray", {
     get: function () {
         h_log("[v] window PluginArray value [get]", "arg:", arguments);
-        return function () {
-            h_log("[v] window PluginArray value [call]", "arg:", arguments)
-        }
+        return _PluginArray
     }, enumerable: false, configurable: true
 });
 Object.defineProperty(window, "Plugin", {
@@ -2142,9 +2107,7 @@ Object.defineProperty(window, "PerformanceElementTiming", {
 Object.defineProperty(window, "Performance", {
     get: function () {
         h_log("[v] window Performance value [get]", "arg:", arguments);
-        return function () {
-            h_log("[v] window Performance value [call]", "arg:", arguments)
-        }
+        return _Performance
     }, enumerable: false, configurable: true
 });
 Object.defineProperty(window, "Path2D", {
@@ -2240,15 +2203,6 @@ Object.defineProperty(window, "NodeFilter", {
         h_log("[v] window NodeFilter value [get]", "arg:", arguments);
         return function () {
             h_log("[v] window NodeFilter value [call]", "arg:", arguments)
-        }
-    }, enumerable: false, configurable: true
-});
-
-Object.defineProperty(window, "NetworkInformation", {
-    get: function () {
-        h_log("[v] window NetworkInformation value [get]", "arg:", arguments);
-        return function () {
-            h_log("[v] window NetworkInformation value [call]", "arg:", arguments)
         }
     }, enumerable: false, configurable: true
 });
@@ -2387,9 +2341,7 @@ Object.defineProperty(window, "MimeType", {
 Object.defineProperty(window, "MessagePort", {
     get: function () {
         h_log("[v] window MessagePort value [get]", "arg:", arguments);
-        return function () {
-            h_log("[v] window MessagePort value [call]", "arg:", arguments)
-        }
+        return _MessagePort
     }, enumerable: false, configurable: true
 });
 Object.defineProperty(window, "MessageEvent", {
@@ -2403,9 +2355,7 @@ Object.defineProperty(window, "MessageEvent", {
 Object.defineProperty(window, "MessageChannel", {
     get: function () {
         h_log("[v] window MessageChannel value [get]", "arg:", arguments);
-        return function () {
-            h_log("[v] window MessageChannel value [call]", "arg:", arguments)
-        }
+        return _MessageChannel
     }, enumerable: false, configurable: true
 });
 Object.defineProperty(window, "MediaStreamTrackVideoStats", {
@@ -2512,14 +2462,7 @@ Object.defineProperty(window, "MediaQueryListEvent", {
         }
     }, enumerable: false, configurable: true
 });
-Object.defineProperty(window, "MediaQueryList", {
-    get: function () {
-        h_log("[v] window MediaQueryList value [get]", "arg:", arguments);
-        return function () {
-            h_log("[v] window MediaQueryList value [call]", "arg:", arguments)
-        }
-    }, enumerable: false, configurable: true
-});
+
 Object.defineProperty(window, "MediaList", {
     get: function () {
         h_log("[v] window MediaList value [get]", "arg:", arguments);
@@ -2772,9 +2715,7 @@ Object.defineProperty(window, "IDBIndex", {
 Object.defineProperty(window, "IDBFactory", {
     get: function () {
         h_log("[v] window IDBFactory value [get]", "arg:", arguments);
-        return function () {
-            h_log("[v] window IDBFactory value [call]", "arg:", arguments)
-        }
+        return _IDBFactory
     }, enumerable: false, configurable: true
 });
 Object.defineProperty(window, "IDBDatabase", {
@@ -2801,14 +2742,6 @@ Object.defineProperty(window, "IDBCursor", {
         }
     }, enumerable: false, configurable: true
 });
-Object.defineProperty(window, "History", {
-    get: function () {
-        h_log("[v] window History value [get]", "arg:", arguments);
-        return function () {
-            h_log("[v] window History value [call]", "arg:", arguments)
-        }
-    }, enumerable: false, configurable: true
-});
 Object.defineProperty(window, "Headers", {
     get: function () {
         h_log("[v] window Headers value [get]", "arg:", arguments);
@@ -2822,14 +2755,6 @@ Object.defineProperty(window, "HashChangeEvent", {
         h_log("[v] window HashChangeEvent value [get]", "arg:", arguments);
         return function () {
             h_log("[v] window HashChangeEvent value [call]", "arg:", arguments)
-        }
-    }, enumerable: false, configurable: true
-});
-Object.defineProperty(window, "HTMLVideoElement", {
-    get: function () {
-        h_log("[v] window HTMLVideoElement value [get]", "arg:", arguments);
-        return function () {
-            h_log("[v] window HTMLVideoElement value [call]", "arg:", arguments)
         }
     }, enumerable: false, configurable: true
 });
@@ -2942,14 +2867,6 @@ Object.defineProperty(window, "HTMLStyleElement", {
         h_log("[v] window HTMLStyleElement value [get]", "arg:", arguments);
         return function () {
             h_log("[v] window HTMLStyleElement value [call]", "arg:", arguments)
-        }
-    }, enumerable: false, configurable: true
-});
-Object.defineProperty(window, "HTMLSpanElement", {
-    get: function () {
-        h_log("[v] window HTMLSpanElement value [get]", "arg:", arguments);
-        return function () {
-            h_log("[v] window HTMLSpanElement value [call]", "arg:", arguments)
         }
     }, enumerable: false, configurable: true
 });
@@ -3094,14 +3011,6 @@ Object.defineProperty(window, "HTMLMenuElement", {
         h_log("[v] window HTMLMenuElement value [get]", "arg:", arguments);
         return function () {
             h_log("[v] window HTMLMenuElement value [call]", "arg:", arguments)
-        }
-    }, enumerable: false, configurable: true
-});
-Object.defineProperty(window, "HTMLMediaElement", {
-    get: function () {
-        h_log("[v] window HTMLMediaElement value [get]", "arg:", arguments);
-        return function () {
-            h_log("[v] window HTMLMediaElement value [call]", "arg:", arguments)
         }
     }, enumerable: false, configurable: true
 });
@@ -3258,14 +3167,6 @@ Object.defineProperty(window, "HTMLElement", {
         }
     }, enumerable: false, configurable: true
 });
-Object.defineProperty(window, "HTMLDocument", {
-    get: function () {
-        h_log("[v] window HTMLDocument value [get]", "arg:", arguments);
-        return function () {
-            h_log("[v] window HTMLDocument value [call]", "arg:", arguments)
-        }
-    }, enumerable: false, configurable: true
-});
 Object.defineProperty(window, "HTMLDirectoryElement", {
     get: function () {
         h_log("[v] window HTMLDirectoryElement value [get]", "arg:", arguments);
@@ -3322,14 +3223,6 @@ Object.defineProperty(window, "HTMLCollection", {
         }
     }, enumerable: false, configurable: true
 });
-Object.defineProperty(window, "HTMLCanvasElement", {
-    get: function () {
-        h_log("[v] window HTMLCanvasElement value [get]", "arg:", arguments);
-        return function () {
-            h_log("[v] window HTMLCanvasElement value [call]", "arg:", arguments)
-        }
-    }, enumerable: false, configurable: true
-});
 Object.defineProperty(window, "HTMLButtonElement", {
     get: function () {
         h_log("[v] window HTMLButtonElement value [get]", "arg:", arguments);
@@ -3367,14 +3260,6 @@ Object.defineProperty(window, "HTMLAreaElement", {
         h_log("[v] window HTMLAreaElement value [get]", "arg:", arguments);
         return function () {
             h_log("[v] window HTMLAreaElement value [call]", "arg:", arguments)
-        }
-    }, enumerable: false, configurable: true
-});
-Object.defineProperty(window, "HTMLAllCollection", {
-    get: function () {
-        h_log("[v] window HTMLAllCollection value [get]", "arg:", arguments);
-        return function () {
-            h_log("[v] window HTMLAllCollection value [call]", "arg:", arguments)
         }
     }, enumerable: false, configurable: true
 });
@@ -3906,14 +3791,6 @@ Object.defineProperty(window, "ChannelMergerNode", {
         }
     }, enumerable: false, configurable: true
 });
-Object.defineProperty(window, "CanvasRenderingContext2D", {
-    get: function () {
-        h_log("[v] window CanvasRenderingContext2D value [get]", "arg:", arguments);
-        return function () {
-            h_log("[v] window CanvasRenderingContext2D value [call]", "arg:", arguments)
-        }
-    }, enumerable: false, configurable: true
-});
 Object.defineProperty(window, "CanvasPattern", {
     get: function () {
         h_log("[v] window CanvasPattern value [get]", "arg:", arguments);
@@ -4387,14 +4264,7 @@ Object.defineProperty(window, "BeforeInstallPromptEvent", {
         }
     }, enumerable: false, configurable: true
 });
-Object.defineProperty(window, "BaseAudioContext", {
-    get: function () {
-        h_log("[v] window BaseAudioContext value [get]", "arg:", arguments);
-        return function () {
-            h_log("[v] window BaseAudioContext value [call]", "arg:", arguments)
-        }
-    }, enumerable: false, configurable: true
-});
+
 Object.defineProperty(window, "BarProp", {
     get: function () {
         h_log("[v] window BarProp value [get]", "arg:", arguments);
@@ -4451,14 +4321,6 @@ Object.defineProperty(window, "AudioParam", {
         }
     }, enumerable: false, configurable: true
 });
-Object.defineProperty(window, "AudioNode", {
-    get: function () {
-        h_log("[v] window AudioNode value [get]", "arg:", arguments);
-        return function () {
-            h_log("[v] window AudioNode value [call]", "arg:", arguments)
-        }
-    }, enumerable: false, configurable: true
-});
 Object.defineProperty(window, "AudioListener", {
     get: function () {
         h_log("[v] window AudioListener value [get]", "arg:", arguments);
@@ -4467,27 +4329,11 @@ Object.defineProperty(window, "AudioListener", {
         }
     }, enumerable: false, configurable: true
 });
-Object.defineProperty(window, "AudioDestinationNode", {
-    get: function () {
-        h_log("[v] window AudioDestinationNode value [get]", "arg:", arguments);
-        return function () {
-            h_log("[v] window AudioDestinationNode value [call]", "arg:", arguments)
-        }
-    }, enumerable: false, configurable: true
-});
 Object.defineProperty(window, "AudioData", {
     get: function () {
         h_log("[v] window AudioData value [get]", "arg:", arguments);
         return function () {
             h_log("[v] window AudioData value [call]", "arg:", arguments)
-        }
-    }, enumerable: false, configurable: true
-});
-Object.defineProperty(window, "AudioContext", {
-    get: function () {
-        h_log("[v] window AudioContext value [get]", "arg:", arguments);
-        return function () {
-            h_log("[v] window AudioContext value [call]", "arg:", arguments)
         }
     }, enumerable: false, configurable: true
 });
@@ -4536,14 +4382,6 @@ Object.defineProperty(window, "Animation", {
         h_log("[v] window Animation value [get]", "arg:", arguments);
         return function () {
             h_log("[v] window Animation value [call]", "arg:", arguments)
-        }
-    }, enumerable: false, configurable: true
-});
-Object.defineProperty(window, "AnalyserNode", {
-    get: function () {
-        h_log("[v] window AnalyserNode value [get]", "arg:", arguments);
-        return function () {
-            h_log("[v] window AnalyserNode value [call]", "arg:", arguments)
         }
     }, enumerable: false, configurable: true
 });
@@ -4610,6 +4448,7 @@ Object.defineProperty(window, "customElements", {
 Object.defineProperty(window, "history", {
     get: function () {
         h_log("window history get [call]", "arg:", arguments)
+        return _history
     }, set: undefined, enumerable: true, configurable: true,
 });
 Object.defineProperty(window, "navigation", {
@@ -4703,7 +4542,7 @@ Object.defineProperty(window, "opener", {
 Object.defineProperty(window, "parent", {
     get: function () {
         h_log("window parent get [call]", "arg:", arguments)
-
+        return globalThis
     }, set: function () {
         h_log("window parent set [call]", "arg:", arguments)
     }, enumerable: true, configurable: true,
@@ -4779,6 +4618,7 @@ Object.defineProperty(window, "screen", {
 Object.defineProperty(window, "innerWidth", {
     get: function () {
         h_log("window innerWidth get [call]", "arg:", arguments)
+        return 456
     }, set: function () {
         h_log("window innerWidth set [call]", "arg:", arguments)
     }, enumerable: true, configurable: true,
@@ -4786,6 +4626,7 @@ Object.defineProperty(window, "innerWidth", {
 Object.defineProperty(window, "innerHeight", {
     get: function () {
         h_log("window innerHeight get [call]", "arg:", arguments)
+        return 695
     }, set: function () {
         h_log("window innerHeight set [call]", "arg:", arguments)
     }, enumerable: true, configurable: true,
@@ -4800,6 +4641,7 @@ Object.defineProperty(window, "scrollX", {
 Object.defineProperty(window, "pageXOffset", {
     get: function () {
         h_log("window pageXOffset get [call]", "arg:", arguments)
+        return 0
     }, set: function () {
         h_log("window pageXOffset set [call]", "arg:", arguments)
     }, enumerable: true, configurable: true,
@@ -4814,6 +4656,7 @@ Object.defineProperty(window, "scrollY", {
 Object.defineProperty(window, "pageYOffset", {
     get: function () {
         h_log("window pageYOffset get [call]", "arg:", arguments)
+        return 0
     }, set: function () {
         h_log("window pageYOffset set [call]", "arg:", arguments)
     }, enumerable: true, configurable: true,
@@ -4828,6 +4671,7 @@ Object.defineProperty(window, "visualViewport", {
 Object.defineProperty(window, "screenX", {
     get: function () {
         h_log("window screenX get [call]", "arg:", arguments)
+        return 0
     }, set: function () {
         h_log("window screenX set [call]", "arg:", arguments)
     }, enumerable: true, configurable: true,
@@ -4835,6 +4679,7 @@ Object.defineProperty(window, "screenX", {
 Object.defineProperty(window, "screenY", {
     get: function () {
         h_log("window screenY get [call]", "arg:", arguments)
+        return 0
     }, set: function () {
         h_log("window screenY set [call]", "arg:", arguments)
     }, enumerable: true, configurable: true,
@@ -4842,6 +4687,7 @@ Object.defineProperty(window, "screenY", {
 Object.defineProperty(window, "outerWidth", {
     get: function () {
         h_log("window outerWidth get [call]", "arg:", arguments)
+        return 1536
     }, set: function () {
         h_log("window outerWidth set [call]", "arg:", arguments)
     }, enumerable: true, configurable: true,
@@ -4849,6 +4695,7 @@ Object.defineProperty(window, "outerWidth", {
 Object.defineProperty(window, "outerHeight", {
     get: function () {
         h_log("window outerHeight get [call]", "arg:", arguments)
+        return 816
     }, set: function () {
         h_log("window outerHeight set [call]", "arg:", arguments)
     }, enumerable: true, configurable: true,
@@ -4920,6 +4767,7 @@ Object.defineProperty(window, "trustedTypes", {
 Object.defineProperty(window, "performance", {
     get: function () {
         h_log("window performance get [call]", "arg:", arguments)
+        return _performance
     }, set: function () {
         h_log("window performance set [call]", "arg:", arguments)
     }, enumerable: true, configurable: true,
@@ -4946,6 +4794,7 @@ Object.defineProperty(window, "crypto", {
 Object.defineProperty(window, "indexedDB", {
     get: function () {
         h_log("window indexedDB get [call]", "arg:", arguments)
+        return _indexedDB
     }, set: undefined, enumerable: true, configurable: true,
 });
 sessionStorage = {
@@ -4960,7 +4809,9 @@ sessionStorage = {
     removeItem: function (a) {
         h_log("sessionStorage removeItem", arguments)
         delete this[a]
-    }
+    },
+    '__msuuid__': null,
+
 }
 window.sessionStorage = sessionStorage
 
@@ -4976,7 +4827,8 @@ localStorage = {
     removeItem: function (a) {
         h_log("localStorage removeItem", arguments);
         delete this[a]
-    }
+    },
+    'xmst':'FB9TSTJWEPZYIXyFwuwj6Fsle0Tmb1KH0FVi0lOJn6-LJBB4jOY8e2B-NTBBCewZQOM2O6OR2i1ZvzFQn761sjYIIXe_EqMZIMSx7xxQPL6OfOEtXr-xCthuIMzGDqZuxfhaKT1lynFxHG3N5CozFdy8M4qHSyrpaIMFeuQYZ1kmipPmgp4pvjA='
 }
 window.localStorage = localStorage
 
@@ -5756,14 +5608,14 @@ Object.defineProperty(window, "alert", {
         }
     }, enumerable: true, configurable: true
 });
-Object.defineProperty(window, "atob", {
-    get: function () {
-        h_log("[v] window atob value [get]", "arg:", arguments);
-        return function () {
-            h_log("[v] window atob value [call]", "arg:", arguments)
-        }
-    }, enumerable: true, configurable: true
-});
+// Object.defineProperty(window, "atob", {
+//     get: function () {
+//         h_log("[v] window atob value [get]", "arg:", arguments);
+//         return function () {
+//             h_log("[v] window atob value [call]", "arg:", arguments)
+//         }
+//     }, enumerable: true, configurable: true
+// });
 Object.defineProperty(window, "blur", {
     get: function () {
         h_log("[v] window blur value [get]", "arg:", arguments);
@@ -5772,14 +5624,14 @@ Object.defineProperty(window, "blur", {
         }
     }, enumerable: true, configurable: true
 });
-Object.defineProperty(window, "btoa", {
-    get: function () {
-        h_log("[v] window btoa value [get]", "arg:", arguments);
-        return function () {
-            h_log("[v] window btoa value [call]", "arg:", arguments)
-        }
-    }, enumerable: true, configurable: true
-});
+// Object.defineProperty(window, "btoa", {
+//     get: function () {
+//         h_log("[v] window btoa value [get]", "arg:", arguments);
+//         return function () {
+//             h_log("[v] window btoa value [call]", "arg:", arguments)
+//         }
+//     }, enumerable: true, configurable: true
+// });
 Object.defineProperty(window, "cancelAnimationFrame", {
     get: function () {
         h_log("[v] window cancelAnimationFrame value [get]", "arg:", arguments);
@@ -5889,6 +5741,7 @@ Object.defineProperty(window, "matchMedia", {
         h_log("[v] window matchMedia value [get]", "arg:", arguments);
         return function () {
             h_log("[v] window matchMedia value [call]", "arg:", arguments)
+            return new MediaQueryList()
         }
     }, enumerable: true, configurable: true
 });
@@ -8024,14 +7877,6 @@ Object.defineProperty(window, "MutationEvent", {
         h_log("[v] window MutationEvent value [get]", "arg:", arguments);
         return function () {
             h_log("[v] window MutationEvent value [call]", "arg:", arguments)
-        }
-    }, enumerable: false, configurable: true
-});
-Object.defineProperty(window, "NavigatorUAData", {
-    get: function () {
-        h_log("[v] window NavigatorUAData value [get]", "arg:", arguments);
-        return function () {
-            h_log("[v] window NavigatorUAData value [call]", "arg:", arguments)
         }
     }, enumerable: false, configurable: true
 });

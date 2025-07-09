@@ -4,6 +4,7 @@ Object.defineProperty(_location, "valueOf", {
         h_log("[v] _location valueOf value [get]", "arg:", arguments);
         return function () {
             h_log("[v] _location valueOf value [call]", "arg:", arguments)
+            return _location
         }
     }, enumerable: false, configurable: false
 });
@@ -15,7 +16,6 @@ Object.defineProperty(_location, "ancestorOrigins", {
 Object.defineProperty(_location, "href", {
     get: function () {
         h_log("_location href get [call]", "arg:", arguments)
-        debugger;
         return config_LOCATION.href
     }, set: function () {
         h_log("_location href set [call]", "arg:", arguments)
@@ -112,6 +112,7 @@ Object.defineProperty(_location, "toString", {
         h_log("[v] _location toString value [get]", "arg:", arguments);
         return function () {
             h_log("[v] _location toString value [call]", "arg:", arguments)
+            return config_LOCATION.href
         }
     }, enumerable: true, configurable: false
 });

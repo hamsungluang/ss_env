@@ -1,0 +1,1 @@
+matchMedia('(forced-colors: active)')
