@@ -2,18 +2,17 @@ let _document = {};
 Object.defineProperty(_document, "location", {
     get: function () {
         h_log("_document location get [call]", "arg:", arguments)
-        return _location
     }, set: function () {
         h_log("_document location set [call]", "arg:", arguments)
     }, enumerable: true, configurable: false,
 });
 _document.__proto__ = {};
-HTMLDocument = function () {
+let _HTMLDocument = function () {
     h_log("_document.__proto__ constructor value [call]", "arg:", arguments)
 };
-HTMLDocument.prototype = _document.__proto__;
+_HTMLDocument.prototype = _document.__proto__;
 Object.defineProperty(_document.__proto__, "constructor", {
-    value: HTMLDocument,
+    value: _HTMLDocument,
     writable: true,
     enumerable: false,
     configurable: true,
@@ -43,13 +42,11 @@ Object.defineProperty(_document.__proto__.__proto__, "documentURI", {
 Object.defineProperty(_document.__proto__.__proto__, "compatMode", {
     get: function () {
         h_log("_document.__proto__.__proto__ compatMode get [call]", "arg:", arguments)
-        return 'CSS1Compat'
     }, set: undefined, enumerable: true, configurable: true,
 });
 Object.defineProperty(_document.__proto__.__proto__, "characterSet", {
     get: function () {
         h_log("_document.__proto__.__proto__ characterSet get [call]", "arg:", arguments)
-        return 'UTF-8'
     }, set: undefined, enumerable: true, configurable: true,
 });
 Object.defineProperty(_document.__proto__.__proto__, "charset", {
@@ -75,7 +72,6 @@ Object.defineProperty(_document.__proto__.__proto__, "doctype", {
 Object.defineProperty(_document.__proto__.__proto__, "documentElement", {
     get: function () {
         h_log("_document.__proto__.__proto__ documentElement get [call]", "arg:", arguments)
-        return _html_dom
     }, set: undefined, enumerable: true, configurable: true,
 });
 Object.defineProperty(_document.__proto__.__proto__, "xmlEncoding", {
@@ -172,7 +168,6 @@ Object.defineProperty(_document.__proto__.__proto__, "head", {
 Object.defineProperty(_document.__proto__.__proto__, "images", {
     get: function () {
         h_log("_document.__proto__.__proto__ images get [call]", "arg:", arguments)
-        return document_images
     }, set: undefined, enumerable: true, configurable: true,
 });
 Object.defineProperty(_document.__proto__.__proto__, "embeds", {
@@ -272,7 +267,6 @@ Object.defineProperty(_document.__proto__.__proto__, "bgColor", {
 Object.defineProperty(_document.__proto__.__proto__, "all", {
     get: function () {
         h_log("_document.__proto__.__proto__ all get [call]", "arg:", arguments)
-        return document_all
     }, set: undefined, enumerable: true, configurable: true,
 });
 Object.defineProperty(_document.__proto__.__proto__, "scrollingElement", {
@@ -1275,17 +1269,13 @@ Object.defineProperty(_document.__proto__.__proto__, "createElement", {
         h_log("[v] _document.__proto__.__proto__ createElement value [get]", "arg:", arguments);
         return function () {
             h_log("[v] _document.__proto__.__proto__ createElement value [call]", "arg:", arguments);
+            debugger;
             if (arguments[0] === "div") {
                 return new HTMLDivElement("h_div", "div1")
             } else if (arguments[0] === "a") {
                 return new HTMLAnchorElement("a", "a1")
-            } else if (arguments[0] === "span") {
-                return new HTMLSpanElement('h_span', "span1")
-            } else if (arguments[0] === "canvas") {
-                return new HTMLCanvasElement('h_canvas', "canvas1")
-            } else if (arguments[0] === "video") {
-                return new HTMLVideoElement('h_video', "video1")
             }
+
         }
     }, enumerable: true, configurable: true
 });
@@ -1316,12 +1306,12 @@ Object.defineProperty(_createExpression.__proto__, "evaluate", {
         }
     }, enumerable: true, configurable: true
 });
-XPathExpression = function () {
+let _XPathExpression = function () {
     h_log("_createExpression.__proto__ constructor value [call]", "arg:", arguments)
 };
-XPathExpression.prototype = _createExpression.__proto__;
+_XPathExpression.prototype = _createExpression.__proto__;
 Object.defineProperty(_createExpression.__proto__, "constructor", {
-    value: XPathExpression,
+    value: _XPathExpression,
     writable: true,
     enumerable: false,
     configurable: true,
@@ -1378,7 +1368,6 @@ Object.defineProperty(_document.__proto__.__proto__, "createTextNode", {
         h_log("[v] _document.__proto__.__proto__ createTextNode value [get]", "arg:", arguments);
         return function () {
             h_log("[v] _document.__proto__.__proto__ createTextNode value [call]", "arg:", arguments)
-            return {}
         }
     }, enumerable: true, configurable: true
 });
@@ -1649,12 +1638,12 @@ Object.defineProperty(_document.__proto__.__proto__, "writeln", {
         }
     }, enumerable: true, configurable: true
 });
-Document = function () {
+let _Document = function () {
     h_log("_document.__proto__.__proto__ constructor value [call]", "arg:", arguments)
 };
-Document.prototype = _document.__proto__.__proto__;
+_Document.prototype = _document.__proto__.__proto__;
 Object.defineProperty(_document.__proto__.__proto__, "constructor", {
-    value: Document,
+    value: _Document,
     writable: true,
     enumerable: false,
     configurable: true,

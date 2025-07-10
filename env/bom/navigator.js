@@ -3,70 +3,36 @@ _navigator.__proto__ = {};
 Object.defineProperty(_navigator.__proto__, "vendorSub", {
     get: function () {
         h_log("_navigator.__proto__ vendorSub get [call]", "arg:", arguments)
-        return ''
     }, set: undefined, enumerable: true, configurable: true,
 });
 Object.defineProperty(_navigator.__proto__, "productSub", {
     get: function () {
         h_log("_navigator.__proto__ productSub get [call]", "arg:", arguments)
-        return '20030107'
     }, set: undefined, enumerable: true, configurable: true,
 });
 Object.defineProperty(_navigator.__proto__, "vendor", {
     get: function () {
         h_log("_navigator.__proto__ vendor get [call]", "arg:", arguments)
-        return 'Google Inc.'
     }, set: undefined, enumerable: true, configurable: true,
 });
 Object.defineProperty(_navigator.__proto__, "maxTouchPoints", {
     get: function () {
         h_log("_navigator.__proto__ maxTouchPoints get [call]", "arg:", arguments)
-        return 0
     }, set: undefined, enumerable: true, configurable: true,
-});
-
-let _scheduling = {};
-_scheduling.__proto__ = {};
-Object.defineProperty(_scheduling.__proto__, "isInputPending", {
-    get: function () {
-        h_log("[v] _scheduling.__proto__ isInputPending value [get]", "arg:", arguments);
-        return function () {
-            h_log("[v] _scheduling.__proto__ isInputPending value [call]", "arg:", arguments)
-        }
-    }, enumerable: true, configurable: true
-});
-Scheduling = function () {
-    h_log("_scheduling.__proto__ constructor value [call]", "arg:", arguments)
-};
-Scheduling.prototype = _scheduling.__proto__;
-Object.defineProperty(_scheduling.__proto__, "constructor", {
-    value: Scheduling,
-    writable: true,
-    enumerable: false,
-    configurable: true,
-});
-Object.defineProperty(_scheduling.__proto__, Symbol.toStringTag, {
-    value: "Scheduling",
-    writable: false,
-    enumerable: false,
-    configurable: true,
 });
 Object.defineProperty(_navigator.__proto__, "scheduling", {
     get: function () {
         h_log("_navigator.__proto__ scheduling get [call]", "arg:", arguments)
-        return _scheduling
     }, set: undefined, enumerable: true, configurable: true,
 });
 Object.defineProperty(_navigator.__proto__, "userActivation", {
     get: function () {
         h_log("_navigator.__proto__ userActivation get [call]", "arg:", arguments)
-        return _userActivation
     }, set: undefined, enumerable: true, configurable: true,
 });
 Object.defineProperty(_navigator.__proto__, "doNotTrack", {
     get: function () {
         h_log("_navigator.__proto__ doNotTrack get [call]", "arg:", arguments)
-        return null
     }, set: undefined, enumerable: true, configurable: true,
 });
 Object.defineProperty(_navigator.__proto__, "geolocation", {
@@ -77,13 +43,11 @@ Object.defineProperty(_navigator.__proto__, "geolocation", {
 Object.defineProperty(_navigator.__proto__, "connection", {
     get: function () {
         h_log("_navigator.__proto__ connection get [call]", "arg:", arguments)
-        return _connection
     }, set: undefined, enumerable: true, configurable: true,
 });
 Object.defineProperty(_navigator.__proto__, "plugins", {
     get: function () {
         h_log("_navigator.__proto__ plugins get [call]", "arg:", arguments)
-        return _plugins
     }, set: undefined, enumerable: true, configurable: true,
 });
 Object.defineProperty(_navigator.__proto__, "mimeTypes", {
@@ -109,13 +73,11 @@ Object.defineProperty(_navigator.__proto__, "webkitPersistentStorage", {
 Object.defineProperty(_navigator.__proto__, "hardwareConcurrency", {
     get: function () {
         h_log("_navigator.__proto__ hardwareConcurrency get [call]", "arg:", arguments)
-        return 8
     }, set: undefined, enumerable: true, configurable: true,
 });
 Object.defineProperty(_navigator.__proto__, "cookieEnabled", {
     get: function () {
         h_log("_navigator.__proto__ cookieEnabled get [call]", "arg:", arguments)
-        return true
     }, set: undefined, enumerable: true, configurable: true,
 });
 Object.defineProperty(_navigator.__proto__, "appCodeName", {
@@ -132,7 +94,6 @@ Object.defineProperty(_navigator.__proto__, "appName", {
 Object.defineProperty(_navigator.__proto__, "appVersion", {
     get: function () {
         h_log("_navigator.__proto__ appVersion get [call]", "arg:", arguments)
-        return '5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36'
     }, set: undefined, enumerable: true, configurable: true,
 });
 Object.defineProperty(_navigator.__proto__, "platform", {
@@ -206,12 +167,12 @@ Object.defineProperty(_navigator.__proto__, "vibrate", {
         }
     }, enumerable: true, configurable: true
 });
-Navigator = function () {
+let _Navigator = function () {
     h_log("_navigator.__proto__ constructor value [call]", "arg:", arguments)
 };
-Navigator.prototype = _navigator.__proto__;
+_Navigator.prototype = _navigator.__proto__;
 Object.defineProperty(_navigator.__proto__, "constructor", {
-    value: Navigator,
+    value: _Navigator,
     writable: true,
     enumerable: false,
     configurable: true,
@@ -344,7 +305,6 @@ Object.defineProperty(_navigator.__proto__, "windowControlsOverlay", {
 Object.defineProperty(_navigator.__proto__, "userAgentData", {
     get: function () {
         h_log("_navigator.__proto__ userAgentData get [call]", "arg:", arguments)
-        return _userAgentData
     }, set: undefined, enumerable: true, configurable: true,
 });
 Object.defineProperty(_navigator.__proto__, "adAuctionComponents", {
@@ -395,32 +355,15 @@ Object.defineProperty(_navigator.__proto__, "clearAppBadge", {
         }
     }, enumerable: true, configurable: true
 });
+
+
+
+
 Object.defineProperty(_navigator.__proto__, "getBattery", {
     get: function () {
         h_log("[v] _navigator.__proto__ getBattery value [get]", "arg:", arguments);
         return function () {
             h_log("[v] _navigator.__proto__ getBattery value [call]", "arg:", arguments)
-            return Promise.resolve({
-                level: 1,           // 电量级别 (0 到 1)
-                charging: true,     // 是否正在充电
-                chargingTime: 0,    // 充满电所需时间(秒)，0表示已充满或未充电
-                dischargingTime: Infinity, // 完全放电时间(秒)
-                // 事件监听器
-                onchargingchange: null,
-                onchargingtimechange: null,
-                ondischargingtimechange: null,
-                onlevelchange: null,
-                // 添加事件监听器的方法
-                addEventListener: function (type, listener) {
-                    this['on' + type] = listener;
-                },
-                // 移除事件监听器的方法
-                removeEventListener: function (type, listener) {
-                    if (this['on' + type] === listener) {
-                        this['on' + type] = null;
-                    }
-                }
-            });
         }
     }, enumerable: true, configurable: true
 });

@@ -1,1 +1,0 @@
-matchMedia('(forced-colors: active)')

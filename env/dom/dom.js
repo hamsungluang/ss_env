@@ -979,12 +979,9 @@ Object.defineProperty(_base_dom.__proto__, "className", {
         h_log("_base_dom.__proto__ className set [call]", "arg:", arguments)
     }, enumerable: true, configurable: true,
 });
-
-
 Object.defineProperty(_base_dom.__proto__, "classList", {
     get: function () {
         h_log("_base_dom.__proto__ classList get [call]", "arg:", arguments)
-        return {length:0,value:""}
     }, set: function () {
         h_log("_base_dom.__proto__ classList set [call]", "arg:", arguments)
     }, enumerable: true, configurable: true,
@@ -1069,13 +1066,11 @@ Object.defineProperty(_base_dom.__proto__, "clientLeft", {
 Object.defineProperty(_base_dom.__proto__, "clientWidth", {
     get: function () {
         h_log("_base_dom.__proto__ clientWidth get [call]", "arg:", arguments)
-        return 1116
     }, set: undefined, enumerable: true, configurable: true,
 });
 Object.defineProperty(_base_dom.__proto__, "clientHeight", {
     get: function () {
         h_log("_base_dom.__proto__ clientHeight get [call]", "arg:", arguments)
-        return 3034
     }, set: undefined, enumerable: true, configurable: true,
 });
 Object.defineProperty(_base_dom.__proto__, "onbeforecopy", {
