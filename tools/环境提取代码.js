@@ -124,7 +124,7 @@ let get_obj_code = function (obj, obj_text, isdom){
                     }
                     // 对value 为 函数的，进行额外处理，把value换成 get，以便于打印日志和补充环境
                     else if (_obj_attribute_descriptors === "value") {
-                        Descriptors_text += `get:function(){h_log("[v] ${obj_text} ${_obj_attribute} ${_obj_attribute_descriptors} [get]","arg:", arguments);return function(){h_log("[v] ${obj_text} ${_obj_attribute} ${_obj_attribute_descriptors} [call]","arg:", arguments)}},`
+                        Descriptors_text += `get:function(){h_log("[v] ${obj_text} ${_obj_attribute.toString()} ${_obj_attribute_descriptors} [get]","arg:", arguments);return function(){h_log("[v] ${obj_text} ${_obj_attribute.toString()} ${_obj_attribute_descriptors} [call]","arg:", arguments)}},`
                         let keys = Object.keys(all_PropertyDescriptors[_obj_attribute])
                         Descriptors_text += `${keys[2]}: ${all_PropertyDescriptors[_obj_attribute][keys[2]]}, ${keys[3]}: ${all_PropertyDescriptors[_obj_attribute][keys[3]]}`
                         break;

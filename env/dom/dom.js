@@ -982,6 +982,7 @@ Object.defineProperty(_base_dom.__proto__, "className", {
 Object.defineProperty(_base_dom.__proto__, "classList", {
     get: function () {
         h_log("_base_dom.__proto__ classList get [call]", "arg:", arguments)
+        return new _DOMTokenList
     }, set: function () {
         h_log("_base_dom.__proto__ classList set [call]", "arg:", arguments)
     }, enumerable: true, configurable: true,

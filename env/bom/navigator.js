@@ -43,11 +43,18 @@ Object.defineProperty(_navigator.__proto__, "geolocation", {
 Object.defineProperty(_navigator.__proto__, "connection", {
     get: function () {
         h_log("_navigator.__proto__ connection get [call]", "arg:", arguments)
+        return _network_information
     }, set: undefined, enumerable: true, configurable: true,
 });
+let _plugins = {}
+let _PluginArray = function(){}
+_plugins.__proto__ = {}
+_PluginArray.prototype = _plugins.__proto__
+_plugins = ProxyObj(_plugins, "plugins")
 Object.defineProperty(_navigator.__proto__, "plugins", {
     get: function () {
         h_log("_navigator.__proto__ plugins get [call]", "arg:", arguments)
+        return _plugins
     }, set: undefined, enumerable: true, configurable: true,
 });
 Object.defineProperty(_navigator.__proto__, "mimeTypes", {
@@ -94,6 +101,7 @@ Object.defineProperty(_navigator.__proto__, "appName", {
 Object.defineProperty(_navigator.__proto__, "appVersion", {
     get: function () {
         h_log("_navigator.__proto__ appVersion get [call]", "arg:", arguments)
+        return '5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36'
     }, set: undefined, enumerable: true, configurable: true,
 });
 Object.defineProperty(_navigator.__proto__, "platform", {
@@ -110,7 +118,7 @@ Object.defineProperty(_navigator.__proto__, "product", {
 Object.defineProperty(_navigator.__proto__, "userAgent", {
     get: function () {
         h_log("_navigator.__proto__ userAgent get [call]", "arg:", arguments)
-        return "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+        return "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36"
     }, set: undefined, enumerable: true, configurable: true,
 });
 Object.defineProperty(_navigator.__proto__, "language", {
@@ -305,6 +313,7 @@ Object.defineProperty(_navigator.__proto__, "windowControlsOverlay", {
 Object.defineProperty(_navigator.__proto__, "userAgentData", {
     get: function () {
         h_log("_navigator.__proto__ userAgentData get [call]", "arg:", arguments)
+        return _navigator_UAData
     }, set: undefined, enumerable: true, configurable: true,
 });
 Object.defineProperty(_navigator.__proto__, "adAuctionComponents", {

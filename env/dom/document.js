@@ -2,6 +2,7 @@ let _document = {};
 Object.defineProperty(_document, "location", {
     get: function () {
         h_log("_document location get [call]", "arg:", arguments)
+        return _location
     }, set: function () {
         h_log("_document location set [call]", "arg:", arguments)
     }, enumerable: true, configurable: false,
@@ -72,6 +73,7 @@ Object.defineProperty(_document.__proto__.__proto__, "doctype", {
 Object.defineProperty(_document.__proto__.__proto__, "documentElement", {
     get: function () {
         h_log("_document.__proto__.__proto__ documentElement get [call]", "arg:", arguments)
+        return new _HTMLHtmlElement("document.documentElement")
     }, set: undefined, enumerable: true, configurable: true,
 });
 Object.defineProperty(_document.__proto__.__proto__, "xmlEncoding", {
@@ -264,11 +266,20 @@ Object.defineProperty(_document.__proto__.__proto__, "bgColor", {
         h_log("_document.__proto__.__proto__ bgColor set [call]", "arg:", arguments)
     }, enumerable: true, configurable: true,
 });
+let document_all = {}
+document_all.__proto__ = {
+    [Symbol.toStringTag] : "HTMLAllCollection"
+}
+let _HTMLAllCollection = function () {}
+_HTMLAllCollection.prototype = document_all.__proto__
+
 Object.defineProperty(_document.__proto__.__proto__, "all", {
     get: function () {
         h_log("_document.__proto__.__proto__ all get [call]", "arg:", arguments)
+        return document_all
     }, set: undefined, enumerable: true, configurable: true,
 });
+document_all = ProxyObj(document_all, "document.all")
 Object.defineProperty(_document.__proto__.__proto__, "scrollingElement", {
     get: function () {
         h_log("_document.__proto__.__proto__ scrollingElement get [call]", "arg:", arguments)
@@ -1269,11 +1280,14 @@ Object.defineProperty(_document.__proto__.__proto__, "createElement", {
         h_log("[v] _document.__proto__.__proto__ createElement value [get]", "arg:", arguments);
         return function () {
             h_log("[v] _document.__proto__.__proto__ createElement value [call]", "arg:", arguments);
-            debugger;
             if (arguments[0] === "div") {
-                return new HTMLDivElement("h_div", "div1")
+                return new _HTMLDivElement("h_div", "div1")
             } else if (arguments[0] === "a") {
-                return new HTMLAnchorElement("a", "a1")
+                return new _HTMLAnchorElement("h_a", "a1")
+            } else if (arguments[0] === "span") {
+                return new _HTMLSpanElement("h_span", "span1")
+            } else if (arguments[0] === "canvas") {
+                return new _HTMLCanvasElement("h_canva", "canva1")
             }
 
         }
@@ -1368,6 +1382,7 @@ Object.defineProperty(_document.__proto__.__proto__, "createTextNode", {
         h_log("[v] _document.__proto__.__proto__ createTextNode value [get]", "arg:", arguments);
         return function () {
             h_log("[v] _document.__proto__.__proto__ createTextNode value [call]", "arg:", arguments)
+            return new _Text
         }
     }, enumerable: true, configurable: true
 });
