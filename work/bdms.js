@@ -6538,7 +6538,17 @@ if (!window.bdms) {
                                                     h.push([o, i, u, s, c, a, f, l]),
                                                         g(y[0], d, e, y[1]);
                                                 else {
+                                                    // h_log('n:', n, "d:", d, "e:", e);
                                                     var m = n.apply(d, e);
+                                                    try {
+                                                        if (e[0].includes("Module._compile")) {
+                                                            debugger
+                                                            m = false
+
+                                                        }
+                                                    } catch (error) {
+                                                    }
+                                                    // h_log("m:", m);
                                                     if (e.length == 2 && e[0] == "a_bogus") {
                                                         window.a_bogus = e[1]
                                                     }
@@ -7942,7 +7952,7 @@ if (!window.bdms) {
     }();
 }
 
-let get_abgous = function (url) {
+let get_abgous = function () {
     var t = {
         "aid": 6383,
         "pageId": 6241,
@@ -7965,7 +7975,7 @@ let get_abgous = function (url) {
         {
             "args": [
                 "GET",
-                url,
+                simon_url,
                 true
             ]
         },
@@ -7982,28 +7992,28 @@ let get_abgous = function (url) {
             ]
         }
     ];
-    xhr.invokeList = [
-        {
-            "name": "addEventListener",
-            "args": [
-                "load",
-                null
-            ]
-        },
-        {
-            "name": "addEventListener",
-            "args": [
-                "error",
-                null
-            ]
-        }
-    ];
-    xhr._vc_status = 1;
+    // xhr.invokeList = [
+    //     {
+    //         "name": "addEventListener",
+    //         "args": [
+    //             "load",
+    //             null
+    //         ]
+    //     },
+    //     {
+    //         "name": "addEventListener",
+    //         "args": [
+    //             "error",
+    //             null
+    //         ]
+    //     }
+    // ];
+    // xhr._vc_status = 1;
     xhr.send(null)
     // process = process_
-    console.log(window.a_bogus)
+    // h_log(window.a_bogus)
     return window.a_bogus
 }
-// get_abgous()
-console.log(get_abgous("device_platform=webapp&aid=6383&channel=channel_pc_web&sec_user_id=MS4wLjABAAAAtw6AwaGxwUE4kc4VAwLkrZ2yHRRB-oCa9-h5LSP1nRg&max_cursor=0&locate_query=false&show_live_replay_strategy=1&need_time_list=1&time_list_query=0&whale_cut_token=&cut_version=1&count=18&publish_video_strategy_type=2&from_user_page=1&update_version_code=170400&pc_client_type=1&pc_libra_divert=Mac&support_h265=1&support_dash=0&cpu_core_num=4&version_code=290100&version_name=29.1.0&cookie_enabled=true&screen_width=1440&screen_height=900&browser_language=zh-CN&browser_platform=MacIntel&browser_name=Chrome&browser_version=137.0.0.0&browser_online=true&engine_name=Blink&engine_version=137.0.0.0&os_name=Mac+OS&os_version=10.15.7&device_memory=8&platform=PC&downlink=10&effective_type=4g&round_trip_time=50&webid=7518746084303799859&uifid=163eead721bc91ca6f3a3cb4766a73c0638fabced1012e02c28bcbf3169aca5cb1348391d76f63e2f9da4d719c4da32217a9b2949c98efebcf51e3c9c7e1d0966c784065b26bf6b319b04de558d7cb318383c29fa3a83356e1edcec69ee2d2b9c261a4ab36ad07403666f4f2b321382d22bc25bc620e23bcf48eaac8ccce297a7305d63b5b82ddf5a8eb9dc5afb305639b5d8324a5feb6a13e74d04fbdcf11b6&msToken=bZG6YR9gtnM2c5fhGHXclc0WGcXrN9sOOb6MLWFhXH5-2RqXAxDFrfAgFiI1Ee1SVk-zYnNRe2af6amjkaeH9fdcYn4HctOp1IvORda0XEyChd8Zxczf7RE6Qm90VrapqUb6iFBivE9FvjoeVMJAnmQIYwnYWwaIAIrKxsGGh9jB1MQvgFSSUA==&verifyFp=verify_mcwxt2pq_1EFXqA8p_ZIi6_4yp9_8aCk_VFPJEnnq0ZVB&fp=verify_mcwxt2pq_1EFXqA8p_ZIi6_4yp9_8aCk_VFPJEnnq0ZVB"))
+a_bougs = get_abgous()
+// a_bougs = get_abgous("device_platform=webapp&aid=6383&channel=channel_pc_web&aweme_id=7487819295116823808&update_version_code=170400&pc_client_type=1&pc_libra_divert=Windows&support_h265=1&support_dash=1&cpu_core_num=8&version_code=190500&version_name=19.5.0&cookie_enabled=true&screen_width=1536&screen_height=864&browser_language=en-US&browser_platform=Win32&browser_name=Chrome&browser_version=138.0.0.0&browser_online=true&engine_name=Blink&engine_version=138.0.0.0&os_name=Windows&os_version=10&device_memory=8&platform=PC&downlink=10&effective_type=4g&round_trip_time=50&webid=7493790376601454116&uifid=1ee16134db40129a5ff28e6a352dddaa8524f48fc5e4ea6d697d6a182d7836e4d877a37be48e2e96358ef2f4ae9d4096730f7cc1736d4d69b5f932a40e328db8466acb1a0847d688611f0c6db7eda93f2b5f7475490c0e9a2a9268a2a8e813482bad02506e535b66e93fa0dd7452574bf6e60be564b406f6b839213e59618b1aa2c34f63519a17b1046eac947d36d9deab36b2f7080fed47872bef3386962c65&msToken=VreIjlNgj_0ie6WMPm1mNe1y_h-inryUs80Z8YiB2Prz1UWNQu89SGdJYknn_NuMVC2VXwD5-o_E1n_EydWrEBhLGmbK1y0osV71Klf8dlfKnf0Q_unXtw3I_VtYGyI9y9dX_iXp6U8NS_g4aKDg6e32Q6cLlqZogj1lH2z_pEwKytf4sNvYEII=&verifyFp=verify_mbyg1p37_ES3ouIxg_DprN_4ndq_BvKv_qtaGAOhpJrFJ&fp=verify_mbyg1p37_ES3ouIxg_DprN_4ndq_BvKv_qtaGAOhpJrFJ&x-secsdk-web-expire=1752564358277&x-secsdk-web-signature=eedce58eaa692c6e24048a3e91f35f72")
 

@@ -4,7 +4,7 @@ Object.defineProperty(_location, "valueOf", {
         h_log("[v] _location valueOf value [get]", "arg:", arguments);
         return function () {
             h_log("[v] _location valueOf value [call]", "arg:", arguments)
-            _location
+            return _location
         }
     }, enumerable: false, configurable: false
 });

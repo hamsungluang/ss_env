@@ -173,11 +173,14 @@ Object.defineProperty(window, "XMLHttpRequestEventTarget", {
         }
     }, enumerable: false, configurable: true
 });
+let id_count = 0;
 Object.defineProperty(window, "setTimeout", {
     get: function () {
         h_log("[v] window setTimeout value [get]", "arg:", arguments);
         return function () {
-            h_log("[v] setTimeout value [call]", "arg:", arguments)
+            h_log("[v] window setTimeout value [call]", "arg:", arguments)
+            id_count += 1
+            return id_count
         }
     }, enumerable: false, configurable: true
 });
@@ -186,6 +189,8 @@ Object.defineProperty(window, "setInterval", {
         h_log("[v] window setInterval value [get]", "arg:", arguments);
         return function () {
             h_log("[v] window setInterval value [call]", "arg:", arguments)
+            id_count += 1
+            return id_count
         }
     }, enumerable: false, configurable: true
 });
@@ -196,6 +201,7 @@ _XMLHttpRequest.prototype = {
     send: function () {
         h_log("[v] XMLHttpRequest.prototype send value [call]", "arg:", arguments)
     },
+    [Symbol.toStringTag]: "XMLHttpRequest"
 }
 Object.defineProperty(window, "XMLHttpRequest", {
     get: function () {
@@ -3117,9 +3123,7 @@ Object.defineProperty(window, "HTMLMenuElement", {
 Object.defineProperty(window, "HTMLMediaElement", {
     get: function () {
         h_log("[v] window HTMLMediaElement value [get]", "arg:", arguments);
-        return function () {
-            h_log("[v] window HTMLMediaElement value [call]", "arg:", arguments)
-        }
+        return _HTMLMediaElement
     }, enumerable: false, configurable: true
 });
 Object.defineProperty(window, "HTMLMarqueeElement", {
@@ -3362,9 +3366,7 @@ Object.defineProperty(window, "HTMLBRElement", {
 Object.defineProperty(window, "HTMLAudioElement", {
     get: function () {
         h_log("[v] window HTMLAudioElement value [get]", "arg:", arguments);
-        return function () {
-            h_log("[v] window HTMLAudioElement value [call]", "arg:", arguments)
-        }
+        return _HTMLAudioElement
     }, enumerable: false, configurable: true
 });
 Object.defineProperty(window, "HTMLAreaElement", {
@@ -4706,6 +4708,7 @@ Object.defineProperty(window, "closed", {
 Object.defineProperty(window, "frames", {
     get: function () {
         h_log("window frames get [call]", "arg:", arguments)
+        return globalThis
     }, set: function () {
         h_log("window frames set [call]", "arg:", arguments)
     }, enumerable: true, configurable: true,
@@ -6005,9 +6008,15 @@ Object.defineProperty(window, "requestAnimationFrame", {
         h_log("[v] window requestAnimationFrame value [get]", "arg:", arguments);
         return function () {
             h_log("[v] window requestAnimationFrame value [call]", "arg:", arguments)
+            return 91233
         }
     }, enumerable: true, configurable: true
 });
+window._sdkGlueVersionMap = {
+    "sdkGlueVersion": "1.0.0.64-fix.01",
+    "bdmsVersion": "1.0.1.19-fix.01",
+    "captchaVersion": "4.0.10"
+}
 Object.defineProperty(window, "requestIdleCallback", {
     get: function () {
         h_log("[v] window requestIdleCallback value [get]", "arg:", arguments);
@@ -6897,9 +6906,7 @@ Object.defineProperty(window, "ServiceWorkerRegistration", {
 Object.defineProperty(window, "StorageManager", {
     get: function () {
         h_log("[v] window StorageManager value [get]", "arg:", arguments);
-        return function () {
-            h_log("[v] window StorageManager value [call]", "arg:", arguments)
-        }
+        return _StorageManager
     }, enumerable: false, configurable: true
 });
 Object.defineProperty(window, "SubtleCrypto", {

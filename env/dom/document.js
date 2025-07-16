@@ -268,7 +268,7 @@ Object.defineProperty(_document.__proto__.__proto__, "bgColor", {
 });
 let document_all = {}
 document_all.__proto__ = {
-    [Symbol.toStringTag] : "HTMLAllCollection"
+    [Symbol.toStringTag] : "HTMLAllCollection",
 }
 let _HTMLAllCollection = function () {}
 _HTMLAllCollection.prototype = document_all.__proto__
@@ -280,6 +280,7 @@ Object.defineProperty(_document.__proto__.__proto__, "all", {
     }, set: undefined, enumerable: true, configurable: true,
 });
 document_all = ProxyObj(document_all, "document.all")
+
 Object.defineProperty(_document.__proto__.__proto__, "scrollingElement", {
     get: function () {
         h_log("_document.__proto__.__proto__ scrollingElement get [call]", "arg:", arguments)

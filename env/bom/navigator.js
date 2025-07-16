@@ -46,11 +46,6 @@ Object.defineProperty(_navigator.__proto__, "connection", {
         return _network_information
     }, set: undefined, enumerable: true, configurable: true,
 });
-let _plugins = {}
-let _PluginArray = function(){}
-_plugins.__proto__ = {}
-_PluginArray.prototype = _plugins.__proto__
-_plugins = ProxyObj(_plugins, "plugins")
 Object.defineProperty(_navigator.__proto__, "plugins", {
     get: function () {
         h_log("_navigator.__proto__ plugins get [call]", "arg:", arguments)
@@ -223,6 +218,7 @@ Object.defineProperty(_navigator.__proto__, "mediaDevices", {
 Object.defineProperty(_navigator.__proto__, "storage", {
     get: function () {
         h_log("_navigator.__proto__ storage get [call]", "arg:", arguments)
+        return _storagemanager
     }, set: undefined, enumerable: true, configurable: true,
 });
 Object.defineProperty(_navigator.__proto__, "serviceWorker", {

@@ -1,4 +1,4 @@
-DEBUG = true
+DEBUG = false
 LOCATION = {
     "ancestorOrigins": {},
     "href": "https://www.douyin.com/video/7487819295116823808",

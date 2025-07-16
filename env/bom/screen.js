@@ -3,21 +3,25 @@ _screen.__proto__ = {};
 Object.defineProperty(_screen.__proto__, "availWidth", {
     get: function () {
         h_log("_screen.__proto__ availWidth get [call]", "arg:", arguments)
+        return 1536
     }, set: undefined, enumerable: true, configurable: true,
 });
 Object.defineProperty(_screen.__proto__, "availHeight", {
     get: function () {
         h_log("_screen.__proto__ availHeight get [call]", "arg:", arguments)
+        return 816
     }, set: undefined, enumerable: true, configurable: true,
 });
 Object.defineProperty(_screen.__proto__, "width", {
     get: function () {
         h_log("_screen.__proto__ width get [call]", "arg:", arguments)
+        return 1536
     }, set: undefined, enumerable: true, configurable: true,
 });
 Object.defineProperty(_screen.__proto__, "height", {
     get: function () {
         h_log("_screen.__proto__ height get [call]", "arg:", arguments)
+        return 864
     }, set: undefined, enumerable: true, configurable: true,
 });
 Object.defineProperty(_screen.__proto__, "colorDepth", {
