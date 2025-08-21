@@ -3,6 +3,7 @@ _script_dom.__proto__ = {};
 Object.defineProperty(_script_dom.__proto__, "src", {
     get: function () {
         h_log("_script_dom.__proto__ src get [call]", "arg:", arguments)
+        return ''
     }, set: function () {
         h_log("_script_dom.__proto__ src set [call]", "arg:", arguments)
     }, enumerable: true, configurable: true,
@@ -99,8 +100,13 @@ Object.defineProperty(_script_dom.__proto__, "blocking", {
     }, enumerable: true, configurable: true,
 });
 let _HTMLScriptElement = function () {
-    this.tag_arg = arguments[0]
     h_log("_script_dom.__proto__ constructor value [call]", "arg:", arguments)
+    if (arguments.length && arguments[0] === "h_script") {
+        this.tag_arg = "script" + script_count
+        script_count += 1
+        return
+    }
+    throw TypeError("Illegal constructor")
 };
 _HTMLScriptElement.prototype = _script_dom.__proto__;
 Object.defineProperty(_script_dom.__proto__, "constructor", {

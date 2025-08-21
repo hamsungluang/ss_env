@@ -18,6 +18,7 @@ Object.defineProperty(_navigator.__proto__, "vendor", {
 Object.defineProperty(_navigator.__proto__, "maxTouchPoints", {
     get: function () {
         h_log("_navigator.__proto__ maxTouchPoints get [call]", "arg:", arguments)
+        return 0
     }, set: undefined, enumerable: true, configurable: true,
 });
 Object.defineProperty(_navigator.__proto__, "scheduling", {
@@ -55,6 +56,7 @@ Object.defineProperty(_navigator.__proto__, "plugins", {
 Object.defineProperty(_navigator.__proto__, "mimeTypes", {
     get: function () {
         h_log("_navigator.__proto__ mimeTypes get [call]", "arg:", arguments)
+        return ProxyObj({}, "navigator.mimeTypes")
     }, set: undefined, enumerable: true, configurable: true,
 });
 Object.defineProperty(_navigator.__proto__, "pdfViewerEnabled", {
@@ -67,9 +69,36 @@ Object.defineProperty(_navigator.__proto__, "webkitTemporaryStorage", {
         h_log("_navigator.__proto__ webkitTemporaryStorage get [call]", "arg:", arguments)
     }, set: undefined, enumerable: true, configurable: true,
 });
+
+let _webkitPersistentStorage = {};
+_webkitPersistentStorage.__proto__ = {};
+Object.defineProperty(_webkitPersistentStorage.__proto__, "queryUsageAndQuota", {
+    get: function () {
+        h_log("[v] _webkitPersistentStorage.__proto__ queryUsageAndQuota value [get]", "arg:", arguments);
+        return function () {
+            h_log("[v] _webkitPersistentStorage.__proto__ queryUsageAndQuota value [call]", "arg:", arguments)
+        }
+    }, enumerable: true, configurable: true
+});
+Object.defineProperty(_webkitPersistentStorage.__proto__, "requestQuota", {
+    get: function () {
+        h_log("[v] _webkitPersistentStorage.__proto__ requestQuota value [get]", "arg:", arguments);
+        return function () {
+            h_log("[v] _webkitPersistentStorage.__proto__ requestQuota value [call]", "arg:", arguments)
+        }
+    }, enumerable: true, configurable: true
+});
+Object.defineProperty(_webkitPersistentStorage.__proto__, Symbol.toStringTag, {
+    value: "DeprecatedStorageQuota",
+    writable: false,
+    enumerable: false,
+    configurable: true,
+});
+
 Object.defineProperty(_navigator.__proto__, "webkitPersistentStorage", {
     get: function () {
         h_log("_navigator.__proto__ webkitPersistentStorage get [call]", "arg:", arguments)
+        return _webkitPersistentStorage
     }, set: undefined, enumerable: true, configurable: true,
 });
 Object.defineProperty(_navigator.__proto__, "hardwareConcurrency", {
@@ -361,17 +390,16 @@ Object.defineProperty(_navigator.__proto__, "clearAppBadge", {
     }, enumerable: true, configurable: true
 });
 
-
-
-
 Object.defineProperty(_navigator.__proto__, "getBattery", {
     get: function () {
         h_log("[v] _navigator.__proto__ getBattery value [get]", "arg:", arguments);
         return function () {
             h_log("[v] _navigator.__proto__ getBattery value [call]", "arg:", arguments)
+            return Promise.resolve(_batteryIsCharging);
         }
     }, enumerable: true, configurable: true
 });
+
 Object.defineProperty(_navigator.__proto__, "getUserMedia", {
     get: function () {
         h_log("[v] _navigator.__proto__ getUserMedia value [get]", "arg:", arguments);

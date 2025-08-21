@@ -129,7 +129,9 @@ Object.defineProperty(_base_dom, "popover", {
 });
 Object.defineProperty(_base_dom, "innerText", {
     get: function () {
-        h_log("_base_dom innerText get [call]", "arg:", arguments)
+        h_log("_base_dom innerText get [call]", "arg:", arguments, "this--->", this)
+        // 实际上是返回源代码
+        return "$_ts=window['$_ts'];"
     }, set: function () {
         h_log("_base_dom innerText set [call]", "arg:", arguments)
     }, enumerable: true, configurable: true,
@@ -834,7 +836,8 @@ Object.defineProperty(_base_dom, "tabIndex", {
 });
 Object.defineProperty(_base_dom, "style", {
     get: function () {
-        h_log("_base_dom style get [call]", "arg:", arguments)
+        h_log("_base_dom style get [call]", "arg:", arguments, "this--->", this)
+        return ProxyObj({}, "style.css")
     }, set: function () {
         h_log("_base_dom style set [call]", "arg:", arguments)
     }, enumerable: true, configurable: true,
@@ -968,8 +971,10 @@ Object.defineProperty(_base_dom.__proto__, "tagName", {
 Object.defineProperty(_base_dom.__proto__, "id", {
     get: function () {
         h_log("_base_dom.__proto__ id get [call]", "arg:", arguments)
+        return this._id
     }, set: function () {
-        h_log("_base_dom.__proto__ id set [call]", "arg:", arguments)
+        h_log("_base_dom.__proto__ id set [call]", "arg:", arguments, "this--->", this)
+        this._id = arguments[0]
     }, enumerable: true, configurable: true,
 });
 Object.defineProperty(_base_dom.__proto__, "className", {
@@ -1020,7 +1025,8 @@ Object.defineProperty(_base_dom.__proto__, "innerHTML", {
     get: function () {
         h_log("_base_dom.__proto__ innerHTML get [call]", "arg:", arguments)
     }, set: function () {
-        h_log("_base_dom.__proto__ innerHTML set [call]", "arg:", arguments)
+        h_log("_base_dom.__proto__ innerHTML set [call]", "arg:", arguments, "this--->", this)
+        this._innerHTML = arguments[0]
     }, enumerable: true, configurable: true,
 });
 Object.defineProperty(_base_dom.__proto__, "outerHTML", {
@@ -1521,13 +1527,15 @@ Object.defineProperty(_base_dom.__proto__, "getAttribute", {
     get: function () {
         h_log("[v] _base_dom.__proto__ getAttribute value [get]", "arg:", arguments);
         return function () {
-            h_log("[v] _base_dom.__proto__ getAttribute value [call]", "arg:", arguments)
-            if(this.tag_arg.includes("script")){
-                return "m"
-            }
-            else if(this.tag_arg.includes("meta")){
-                return "m"
-            }
+            h_log("[v] _base_dom.__proto__ getAttribute value [call]", "arg:", arguments, "this--->", this)
+            return this[arguments[0]] === undefined ? null : this[arguments[0]];
+            // if(this.tag_arg.includes("script")){
+            //     return "m"
+            // }
+            // else if(this.tag_arg.includes("meta")){
+            //     return "m"
+            // }
+            // return null
         }
     }, enumerable: true, configurable: true
 });
@@ -1591,10 +1599,8 @@ Object.defineProperty(_base_dom.__proto__, "getElementsByTagName", {
     get: function () {
         h_log("[v] _base_dom.__proto__ getElementsByTagName value [get]", "arg:", arguments);
         return function () {
-            h_log("[v] _base_dom.__proto__ getElementsByTagName value [call]", "arg:", arguments)
-            if(this.tag_arg === "div1"){
-                return []
-            }
+            h_log("[v] _base_dom.__proto__ getElementsByTagName value [call]", "arg:", arguments, "this--->", this)
+            return []
         }
     }, enumerable: true, configurable: true
 });
@@ -1952,15 +1958,14 @@ Object.defineProperty(_base_dom.__proto__.__proto__, "ownerDocument", {
 });
 Object.defineProperty(_base_dom.__proto__.__proto__, "parentNode", {
     get: function () {
-        h_log("_base_dom.__proto__.__proto__ parentNode get [call]", "arg:", arguments)
-        return new HTMLHeadElement()
+        h_log("_base_dom.__proto__.__proto__ parentNode get [call]", "arg:", arguments, "this--->", this)
+        return head1
     }, set: undefined, enumerable: true, configurable: true,
 });
 Object.defineProperty(_base_dom.__proto__.__proto__, "parentElement", {
     get: function () {
-        h_log("_base_dom.__proto__.__proto__ parentElement get [call]", "arg:", arguments)
-        h_log(this)
-        return new HTMLBodyElement("script_parentElement")
+        h_log("_base_dom.__proto__.__proto__ parentElement get [call]", "arg:", arguments, "this--->", this)
+        return head1
     }, set: undefined, enumerable: true, configurable: true,
 });
 Object.defineProperty(_base_dom.__proto__.__proto__, "childNodes", {
@@ -2113,8 +2118,14 @@ Object.defineProperty(_base_dom.__proto__.__proto__, "DOCUMENT_POSITION_IMPLEMEN
 Object.defineProperty(_base_dom.__proto__.__proto__, "appendChild", {
     get: function () {
         h_log("[v] _base_dom.__proto__.__proto__ appendChild value [get]", "arg:", arguments);
-        return function () {
-            h_log("[v] _base_dom.__proto__.__proto__ appendChild value [call]", "arg:", arguments)
+        return function (element) {
+            h_log("[v] _base_dom.__proto__.__proto__ appendChild value [call]", "arg:", arguments, "this--->", this.tag_arg)
+            if (!element || !element.tag_arg) {
+                throw new TypeError("Failed to execute 'appendChild' on 'Node': 1 argument required, but only 0 present.");
+            }
+            const key = element.tag_arg;
+            this._children[key] = element
+            return element
         }
     }, enumerable: true, configurable: true
 });
@@ -2217,8 +2228,17 @@ Object.defineProperty(_base_dom.__proto__.__proto__, "normalize", {
 Object.defineProperty(_base_dom.__proto__.__proto__, "removeChild", {
     get: function () {
         h_log("[v] _base_dom.__proto__.__proto__ removeChild value [get]", "arg:", arguments);
-        return function () {
-            h_log("[v] _base_dom.__proto__.__proto__ removeChild value [call]", "arg:", arguments)
+        return function (element) {
+            h_log("[v] _base_dom.__proto__.__proto__ removeChild value [call]", "arg:", arguments, "this--->", this.tag_arg)
+            if (!element || !element.tag_arg) {
+                throw new TypeError("Failed to execute 'removeChild' on 'Node': 1 argument required, but only 0 present.");
+            }
+            const key = element["tag_arg"]
+            if (this._children[key]) {
+                delete this._children[key];
+                return element
+            }
+            return null; // 如果子节点不存在返回null
         }
     }, enumerable: true, configurable: true
 });

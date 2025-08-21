@@ -101,11 +101,13 @@ Object.defineProperty(_a_dom.__proto__, "shape", {
 Object.defineProperty(_a_dom.__proto__, "origin", {
     get: function () {
         h_log("_a_dom.__proto__ origin get [call]", "arg:", arguments)
+        return this.a_url.origin
     }, set: undefined, enumerable: true, configurable: true,
 });
 Object.defineProperty(_a_dom.__proto__, "protocol", {
     get: function () {
         h_log("_a_dom.__proto__ protocol get [call]", "arg:", arguments)
+        return this.a_url.protocol
     }, set: function () {
         h_log("_a_dom.__proto__ protocol set [call]", "arg:", arguments)
     }, enumerable: true, configurable: true,
@@ -127,6 +129,7 @@ Object.defineProperty(_a_dom.__proto__, "password", {
 Object.defineProperty(_a_dom.__proto__, "host", {
     get: function () {
         h_log("_a_dom.__proto__ host get [call]", "arg:", arguments)
+        return this.a_url.host
     }, set: function () {
         h_log("_a_dom.__proto__ host set [call]", "arg:", arguments)
     }, enumerable: true, configurable: true,
@@ -134,6 +137,7 @@ Object.defineProperty(_a_dom.__proto__, "host", {
 Object.defineProperty(_a_dom.__proto__, "hostname", {
     get: function () {
         h_log("_a_dom.__proto__ hostname get [call]", "arg:", arguments)
+        return this.a_url.hostname
     }, set: function () {
         h_log("_a_dom.__proto__ hostname set [call]", "arg:", arguments)
     }, enumerable: true, configurable: true,
@@ -141,6 +145,7 @@ Object.defineProperty(_a_dom.__proto__, "hostname", {
 Object.defineProperty(_a_dom.__proto__, "port", {
     get: function () {
         h_log("_a_dom.__proto__ port get [call]", "arg:", arguments)
+        return this.a_url.port
     }, set: function () {
         h_log("_a_dom.__proto__ port set [call]", "arg:", arguments)
     }, enumerable: true, configurable: true,
@@ -148,6 +153,7 @@ Object.defineProperty(_a_dom.__proto__, "port", {
 Object.defineProperty(_a_dom.__proto__, "pathname", {
     get: function () {
         h_log("_a_dom.__proto__ pathname get [call]", "arg:", arguments)
+        return this.a_url.pathname
     }, set: function () {
         h_log("_a_dom.__proto__ pathname set [call]", "arg:", arguments)
     }, enumerable: true, configurable: true,
@@ -155,6 +161,7 @@ Object.defineProperty(_a_dom.__proto__, "pathname", {
 Object.defineProperty(_a_dom.__proto__, "search", {
     get: function () {
         h_log("_a_dom.__proto__ search get [call]", "arg:", arguments)
+        return this.a_url.search
     }, set: function () {
         h_log("_a_dom.__proto__ search set [call]", "arg:", arguments)
     }, enumerable: true, configurable: true,
@@ -162,6 +169,7 @@ Object.defineProperty(_a_dom.__proto__, "search", {
 Object.defineProperty(_a_dom.__proto__, "hash", {
     get: function () {
         h_log("_a_dom.__proto__ hash get [call]", "arg:", arguments)
+        return this.a_url.hash
     }, set: function () {
         h_log("_a_dom.__proto__ hash set [call]", "arg:", arguments)
     }, enumerable: true, configurable: true,
@@ -169,8 +177,22 @@ Object.defineProperty(_a_dom.__proto__, "hash", {
 Object.defineProperty(_a_dom.__proto__, "href", {
     get: function () {
         h_log("_a_dom.__proto__ href get [call]", "arg:", arguments)
+        return this.a_url.href
     }, set: function () {
         h_log("_a_dom.__proto__ href set [call]", "arg:", arguments)
+        const url = new URL(arguments[0]);
+        this.a_url = {
+            ancestorOrigins: {},
+            href: url.href,
+            origin: url.origin,
+            protocol: url.protocol,
+            host: url.host,
+            hostname: url.hostname,
+            port: url.port,
+            pathname: url.pathname,
+            search: url.search,
+            hash: url.hash
+        };
     }, enumerable: true, configurable: true,
 });
 Object.defineProperty(_a_dom.__proto__, "toString", {
@@ -183,6 +205,13 @@ Object.defineProperty(_a_dom.__proto__, "toString", {
 });
 let _HTMLAnchorElement = function () {
     h_log("_a_dom.__proto__ constructor value [call]", "arg:", arguments)
+    if (arguments.length && arguments[0] === "h_a") {
+        this.tag_arg = "a" + a_count
+        a_count += 1
+        this._children = {}
+        return
+    }
+    throw TypeError("Illegal constructor")
 };
 _HTMLAnchorElement.prototype = _a_dom.__proto__;
 Object.defineProperty(_a_dom.__proto__, "constructor", {

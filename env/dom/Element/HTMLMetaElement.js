@@ -16,10 +16,8 @@ Object.defineProperty(_meta_dom.__proto__, "httpEquiv", {
 });
 Object.defineProperty(_meta_dom.__proto__, "content", {
     get: function () {
-        h_log("_meta_dom.__proto__ content get [call]", "arg:", arguments)
-        if (this.tag_arg === "meta2") {
-            return config_CONTENT
-        }
+        h_log("_meta_dom.__proto__ content get [call]", "arg:", arguments, "this--->", this)
+        return this._content
     }, set: function () {
         h_log("_meta_dom.__proto__ content set [call]", "arg:", arguments)
     }, enumerable: true, configurable: true,
@@ -39,8 +37,13 @@ Object.defineProperty(_meta_dom.__proto__, "scheme", {
     }, enumerable: true, configurable: true,
 });
 let _HTMLMetaElement = function () {
-    this.tag_arg = arguments[0]
     h_log("_meta_dom.__proto__ constructor value [call]", "arg:", arguments)
+    if (arguments.length && arguments[0] === "h_meta") {
+        this.tag_arg = "meta" + meta_count
+        meta_count += 1
+        return
+    }
+    throw TypeError("Illegal constructor")
 };
 _HTMLMetaElement.prototype = _meta_dom.__proto__;
 Object.defineProperty(_meta_dom.__proto__, "constructor", {

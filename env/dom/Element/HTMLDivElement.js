@@ -10,7 +10,8 @@ Object.defineProperty(_div_dom.__proto__, "align", {
 let _HTMLDivElement = function () {
     h_log("_div_dom.__proto__ constructor value [call]", "arg:", arguments)
     if (arguments.length && arguments[0] === "h_div") {
-        this.tag_arg = arguments[1]
+        this.tag_arg = "div" + div_count
+        div_count += 1
         return
     }
     throw TypeError("Illegal constructor")

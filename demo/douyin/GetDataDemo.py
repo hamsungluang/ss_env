@@ -3,6 +3,7 @@ import subprocess
 import os
 from urllib.parse import quote
 from loguru import logger
+
 # 获取 main.js 的绝对路径
 js_path = os.path.abspath("../../main.js")
 js_dir = os.path.dirname(js_path)  # main.js 所在的目录

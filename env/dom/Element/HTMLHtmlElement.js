@@ -9,6 +9,13 @@ Object.defineProperty(_html_dom.__proto__, "version", {
 });
 let _HTMLHtmlElement = function () {
     h_log("_html_dom.__proto__ constructor value [call]", "arg:", arguments)
+    if (arguments.length && arguments[0] === "h_html") {
+        this.tag_arg = "html" + html_count
+        html_count += 1
+        this._children = {}
+        return
+    }
+    throw TypeError("Illegal constructor")
 };
 _HTMLHtmlElement.prototype = _html_dom.__proto__;
 Object.defineProperty(_html_dom.__proto__, "constructor", {

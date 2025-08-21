@@ -198,6 +198,13 @@ Object.defineProperty(_body_dom.__proto__, "onunload", {
 });
 let _HTMLBodyElement = function () {
     h_log("_body_dom.__proto__ constructor value [call]", "arg:", arguments)
+    if (arguments.length && arguments[0] === "h_body") {
+        this.tag_arg = "body" + body_count
+        body_count += 1
+        this._children = {}
+        return
+    }
+    throw TypeError("Illegal constructor")
 };
 _HTMLBodyElement.prototype = _body_dom.__proto__;
 Object.defineProperty(_body_dom.__proto__, "constructor", {

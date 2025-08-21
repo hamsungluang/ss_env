@@ -27,12 +27,15 @@ Object.defineProperty(_canvas_dom.__proto__, "getContext", {
         h_log("[v] _canvas_dom.__proto__ getContext value [get]", "arg:", arguments);
         return function () {
             h_log("[v] _canvas_dom.__proto__ getContext value [call]", "arg:", arguments)
+            if (arguments[0] === "2d"){
+                return new _CanvasRenderingContext2D
+            }
         }
     }, enumerable: true, configurable: true
 });
 Object.defineProperty(_canvas_dom.__proto__, "toBlob", {
     get: function () {
-        h_log("[v] _canvas_dom.__proto__ toBlob value [get]", "arg:", arguments);
+        h_log("[v] _canvas_dom.__proto__ toBlob value [get]", "arg:", arguments, "this--->", this);
         return function () {
             h_log("[v] _canvas_dom.__proto__ toBlob value [call]", "arg:", arguments)
         }

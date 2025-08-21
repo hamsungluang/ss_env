@@ -59,6 +59,7 @@ window.eval = eval;
 window.isFinite = isFinite;
 window.isNaN = isNaN;
 window.console = console;
+window.ActiveXObject = undefined;
 Object.defineProperty(window, "Option", {
     get: function () {
         h_log("[v] window Option value [get]", "arg:", arguments);
@@ -194,15 +195,7 @@ Object.defineProperty(window, "setInterval", {
         }
     }, enumerable: false, configurable: true
 });
-let _XMLHttpRequest = function () {
-    h_log("XMLHttpRequest constructor value [call]", "arg:", arguments)
-}
-_XMLHttpRequest.prototype = {
-    send: function () {
-        h_log("[v] XMLHttpRequest.prototype send value [call]", "arg:", arguments)
-    },
-    [Symbol.toStringTag]: "XMLHttpRequest"
-}
+
 Object.defineProperty(window, "XMLHttpRequest", {
     get: function () {
         h_log("[v] window XMLHttpRequest value [get]", "arg:", arguments);
@@ -261,9 +254,7 @@ Object.defineProperty(window, "WheelEvent", {
 Object.defineProperty(window, "WebSocket", {
     get: function () {
         h_log("[v] window WebSocket value [get]", "arg:", arguments);
-        return function () {
-            h_log("[v] window WebSocket value [call]", "arg:", arguments)
-        }
+        return _WebSocket
     }, enumerable: false, configurable: true
 });
 Object.defineProperty(window, "WebGLVertexArrayObject", {
@@ -1719,9 +1710,7 @@ Object.defineProperty(window, "ResizeObserver", {
 Object.defineProperty(window, "Request", {
     get: function () {
         h_log("[v] window Request value [get]", "arg:", arguments);
-        return function () {
-            h_log("[v] window Request value [call]", "arg:", arguments)
-        }
+        return _Request
     }, enumerable: false, configurable: true
 });
 Object.defineProperty(window, "ReportingObserver", {
@@ -2759,9 +2748,7 @@ Object.defineProperty(window, "IDBTransaction", {
 Object.defineProperty(window, "IDBRequest", {
     get: function () {
         h_log("[v] window IDBRequest value [get]", "arg:", arguments);
-        return function () {
-            h_log("[v] window IDBRequest value [call]", "arg:", arguments)
-        }
+        return _IDBRequest
     }, enumerable: false, configurable: true
 });
 Object.defineProperty(window, "IDBOpenDBRequest", {
@@ -2799,9 +2786,7 @@ Object.defineProperty(window, "IDBIndex", {
 Object.defineProperty(window, "IDBFactory", {
     get: function () {
         h_log("[v] window IDBFactory value [get]", "arg:", arguments);
-        return function () {
-            h_log("[v] window IDBFactory value [call]", "arg:", arguments)
-        }
+        return _IDBFactory
     }, enumerable: false, configurable: true
 });
 Object.defineProperty(window, "IDBDatabase", {
@@ -3177,9 +3162,7 @@ Object.defineProperty(window, "HTMLLIElement", {
 Object.defineProperty(window, "HTMLInputElement", {
     get: function () {
         h_log("[v] window HTMLInputElement value [get]", "arg:", arguments);
-        return function () {
-            h_log("[v] window HTMLInputElement value [call]", "arg:", arguments)
-        }
+        return _HTMLInputElement
     }, enumerable: false, configurable: true
 });
 Object.defineProperty(window, "HTMLImageElement", {
@@ -3234,9 +3217,7 @@ Object.defineProperty(window, "HTMLFrameElement", {
 Object.defineProperty(window, "HTMLFormElement", {
     get: function () {
         h_log("[v] window HTMLFormElement value [get]", "arg:", arguments);
-        return function () {
-            h_log("[v] window HTMLFormElement value [call]", "arg:", arguments)
-        }
+        return _HTMLFormElement
     }, enumerable: false, configurable: true
 });
 Object.defineProperty(window, "HTMLFormControlsCollection", {
@@ -3774,9 +3755,7 @@ Object.defineProperty(window, "DOMPoint", {
 Object.defineProperty(window, "DOMParser", {
     get: function () {
         h_log("[v] window DOMParser value [get]", "arg:", arguments);
-        return function () {
-            h_log("[v] window DOMParser value [call]", "arg:", arguments)
-        }
+        return _DOMParser
     }, enumerable: false, configurable: true
 });
 Object.defineProperty(window, "DOMMatrixReadOnly", {
@@ -3940,9 +3919,7 @@ Object.defineProperty(window, "ChannelMergerNode", {
 Object.defineProperty(window, "CanvasRenderingContext2D", {
     get: function () {
         h_log("[v] window CanvasRenderingContext2D value [get]", "arg:", arguments);
-        return function () {
-            h_log("[v] window CanvasRenderingContext2D value [call]", "arg:", arguments)
-        }
+        return _CanvasRenderingContext2D
     }, enumerable: false, configurable: true
 });
 Object.defineProperty(window, "CanvasPattern", {
@@ -4617,12 +4594,14 @@ Object.defineProperty(window, "document", {
         return _document
     }, set: undefined, enumerable: true, configurable: false,
 });
+let window_name = "$_YWTU=TiQM0n3RJxDKSD3ffuyLumzWieu3QQaE3z_2EjyEM_A&$_YVTX=Wq&vdFm="
 Object.defineProperty(window, "name", {
     get: function () {
         h_log("window name get [call]", "arg:", arguments)
-        return ""
+        return window_name
     }, set: function () {
         h_log("window name set [call]", "arg:", arguments)
+        window_name = arguments[0]
     }, enumerable: true, configurable: true,
 });
 Object.defineProperty(window, "location", {
@@ -4696,6 +4675,7 @@ Object.defineProperty(window, "toolbar", {
 Object.defineProperty(window, "status", {
     get: function () {
         h_log("window status get [call]", "arg:", arguments)
+        return ''
     }, set: function () {
         h_log("window status set [call]", "arg:", arguments)
     }, enumerable: true, configurable: true,
@@ -4703,6 +4683,7 @@ Object.defineProperty(window, "status", {
 Object.defineProperty(window, "closed", {
     get: function () {
         h_log("window closed get [call]", "arg:", arguments)
+        return false
     }, set: undefined, enumerable: true, configurable: true,
 });
 Object.defineProperty(window, "frames", {
@@ -4716,6 +4697,7 @@ Object.defineProperty(window, "frames", {
 Object.defineProperty(window, "length", {
     get: function () {
         h_log("window length get [call]", "arg:", arguments)
+        return 0
     }, set: function () {
         h_log("window length set [call]", "arg:", arguments)
     }, enumerable: true, configurable: true,
@@ -4729,6 +4711,7 @@ Object.defineProperty(window, "top", {
 Object.defineProperty(window, "opener", {
     get: function () {
         h_log("window opener get [call]", "arg:", arguments)
+        return null
     }, set: function () {
         h_log("window opener set [call]", "arg:", arguments)
     }, enumerable: true, configurable: true,
@@ -4736,7 +4719,7 @@ Object.defineProperty(window, "opener", {
 Object.defineProperty(window, "parent", {
     get: function () {
         h_log("window parent get [call]", "arg:", arguments)
-
+        return globalThis
     }, set: function () {
         h_log("window parent set [call]", "arg:", arguments)
     }, enumerable: true, configurable: true,
@@ -4744,6 +4727,7 @@ Object.defineProperty(window, "parent", {
 Object.defineProperty(window, "frameElement", {
     get: function () {
         h_log("window frameElement get [call]", "arg:", arguments)
+        return null
     }, set: undefined, enumerable: true, configurable: true,
 });
 Object.defineProperty(window, "navigator", {
@@ -4755,6 +4739,7 @@ Object.defineProperty(window, "navigator", {
 Object.defineProperty(window, "origin", {
     get: function () {
         h_log("window origin get [call]", "arg:", arguments)
+        return config_LOCATION.origin
     }, set: function () {
         h_log("window origin set [call]", "arg:", arguments)
     }, enumerable: true, configurable: true,
@@ -4828,6 +4813,7 @@ Object.defineProperty(window, "innerHeight", {
 Object.defineProperty(window, "scrollX", {
     get: function () {
         h_log("window scrollX get [call]", "arg:", arguments)
+        return 0
     }, set: function () {
         h_log("window scrollX set [call]", "arg:", arguments)
     }, enumerable: true, configurable: true,
@@ -4835,6 +4821,7 @@ Object.defineProperty(window, "scrollX", {
 Object.defineProperty(window, "pageXOffset", {
     get: function () {
         h_log("window pageXOffset get [call]", "arg:", arguments)
+        return 0
     }, set: function () {
         h_log("window pageXOffset set [call]", "arg:", arguments)
     }, enumerable: true, configurable: true,
@@ -4842,6 +4829,7 @@ Object.defineProperty(window, "pageXOffset", {
 Object.defineProperty(window, "scrollY", {
     get: function () {
         h_log("window scrollY get [call]", "arg:", arguments)
+        return 0
     }, set: function () {
         h_log("window scrollY set [call]", "arg:", arguments)
     }, enumerable: true, configurable: true,
@@ -4849,6 +4837,7 @@ Object.defineProperty(window, "scrollY", {
 Object.defineProperty(window, "pageYOffset", {
     get: function () {
         h_log("window pageYOffset get [call]", "arg:", arguments)
+        return 0
     }, set: function () {
         h_log("window pageYOffset set [call]", "arg:", arguments)
     }, enumerable: true, configurable: true,
@@ -4863,6 +4852,7 @@ Object.defineProperty(window, "visualViewport", {
 Object.defineProperty(window, "screenX", {
     get: function () {
         h_log("window screenX get [call]", "arg:", arguments)
+        return 0
     }, set: function () {
         h_log("window screenX set [call]", "arg:", arguments)
     }, enumerable: true, configurable: true,
@@ -4870,6 +4860,7 @@ Object.defineProperty(window, "screenX", {
 Object.defineProperty(window, "screenY", {
     get: function () {
         h_log("window screenY get [call]", "arg:", arguments)
+        return 0
     }, set: function () {
         h_log("window screenY set [call]", "arg:", arguments)
     }, enumerable: true, configurable: true,
@@ -4893,6 +4884,7 @@ Object.defineProperty(window, "outerHeight", {
 Object.defineProperty(window, "devicePixelRatio", {
     get: function () {
         h_log("window devicePixelRatio get [call]", "arg:", arguments)
+        return 1.25
     }, set: function () {
         h_log("window devicePixelRatio set [call]", "arg:", arguments)
     }, enumerable: true, configurable: true,
@@ -4907,6 +4899,7 @@ Object.defineProperty(window, "event", {
 Object.defineProperty(window, "clientInformation", {
     get: function () {
         h_log("window clientInformation get [call]", "arg:", arguments)
+        return _navigator
     }, set: function () {
         h_log("window clientInformation set [call]", "arg:", arguments)
     }, enumerable: true, configurable: true,
@@ -4921,6 +4914,7 @@ Object.defineProperty(window, "offscreenBuffering", {
 Object.defineProperty(window, "screenLeft", {
     get: function () {
         h_log("window screenLeft get [call]", "arg:", arguments)
+        return 0
     }, set: function () {
         h_log("window screenLeft set [call]", "arg:", arguments)
     }, enumerable: true, configurable: true,
@@ -4928,6 +4922,7 @@ Object.defineProperty(window, "screenLeft", {
 Object.defineProperty(window, "screenTop", {
     get: function () {
         h_log("window screenTop get [call]", "arg:", arguments)
+        return 0
     }, set: function () {
         h_log("window screenTop set [call]", "arg:", arguments)
     }, enumerable: true, configurable: true,
@@ -4984,6 +4979,7 @@ Object.defineProperty(window, "crypto", {
 Object.defineProperty(window, "indexedDB", {
     get: function () {
         h_log("window indexedDB get [call]", "arg:", arguments)
+        return _indexedDB
     }, set: undefined, enumerable: true, configurable: true,
 });
 sessionStorage = {
@@ -7895,6 +7891,7 @@ Object.defineProperty(window, "speechSynthesis", {
 Object.defineProperty(window, "oncontentvisibilityautostatechange", {
     get: function () {
         h_log("window oncontentvisibilityautostatechange get [call]", "arg:", arguments)
+        return null
     }, set: function () {
         h_log("window oncontentvisibilityautostatechange set [call]", "arg:", arguments)
     }, enumerable: true, configurable: true,
@@ -7902,6 +7899,7 @@ Object.defineProperty(window, "oncontentvisibilityautostatechange", {
 Object.defineProperty(window, "onscrollend", {
     get: function () {
         h_log("window onscrollend get [call]", "arg:", arguments)
+        return null
     }, set: function () {
         h_log("window onscrollend set [call]", "arg:", arguments)
     }, enumerable: true, configurable: true,

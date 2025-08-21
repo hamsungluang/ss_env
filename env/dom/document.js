@@ -73,7 +73,7 @@ Object.defineProperty(_document.__proto__.__proto__, "doctype", {
 Object.defineProperty(_document.__proto__.__proto__, "documentElement", {
     get: function () {
         h_log("_document.__proto__.__proto__ documentElement get [call]", "arg:", arguments)
-        return new _HTMLHtmlElement("document.documentElement")
+        return html1
     }, set: undefined, enumerable: true, configurable: true,
 });
 Object.defineProperty(_document.__proto__.__proto__, "xmlEncoding", {
@@ -127,7 +127,6 @@ Object.defineProperty(_document.__proto__.__proto__, "cookie", {
             _document_cookie_obj[ck_key] = ck_value
         }
         _value_cookie = newValue
-        h_log(_document.cookie)
     }, enumerable: true, configurable: true,
 });
 Object.defineProperty(_document.__proto__.__proto__, "lastModified", {
@@ -157,7 +156,7 @@ Object.defineProperty(_document.__proto__.__proto__, "dir", {
 Object.defineProperty(_document.__proto__.__proto__, "body", {
     get: function () {
         h_log("_document.__proto__.__proto__ body get [call]", "arg:", arguments)
-        return new HTMLBodyElement()
+        return null
     }, set: function () {
         h_log("_document.__proto__.__proto__ body set [call]", "arg:", arguments)
     }, enumerable: true, configurable: true,
@@ -266,20 +265,36 @@ Object.defineProperty(_document.__proto__.__proto__, "bgColor", {
         h_log("_document.__proto__.__proto__ bgColor set [call]", "arg:", arguments)
     }, enumerable: true, configurable: true,
 });
+
+
 let document_all = {}
 document_all.__proto__ = {
     [Symbol.toStringTag] : "HTMLAllCollection",
 }
 let _HTMLAllCollection = function () {}
 _HTMLAllCollection.prototype = document_all.__proto__
-
+document_all = ProxyObj(document_all, "document.all")
 Object.defineProperty(_document.__proto__.__proto__, "all", {
     get: function () {
         h_log("_document.__proto__.__proto__ all get [call]", "arg:", arguments)
-        return document_all
+        return undetectable
     }, set: undefined, enumerable: true, configurable: true,
 });
-document_all = ProxyObj(document_all, "document.all")
+Object.defineProperty(_document.__proto__.__proto__.all, 'length', {
+    get: function () {
+        console.log('document.all.length ------------------------------------->')
+    }
+})
+Object.defineProperty(_document.__proto__.__proto__.all, 0, {
+    get: function () {
+        console.log('document.all.0 ------------------------------------->')
+    }
+})
+Object.defineProperty(_document.__proto__.__proto__.all, 1, {
+    get: function () {
+        console.log('document.all.1 ------------------------------------->')
+    }
+})
 
 Object.defineProperty(_document.__proto__.__proto__, "scrollingElement", {
     get: function () {
@@ -1282,13 +1297,17 @@ Object.defineProperty(_document.__proto__.__proto__, "createElement", {
         return function () {
             h_log("[v] _document.__proto__.__proto__ createElement value [call]", "arg:", arguments);
             if (arguments[0] === "div") {
-                return new _HTMLDivElement("h_div", "div1")
+                return new _HTMLDivElement("h_div")
             } else if (arguments[0] === "a") {
-                return new _HTMLAnchorElement("h_a", "a1")
+                return new _HTMLAnchorElement("h_a")
             } else if (arguments[0] === "span") {
-                return new _HTMLSpanElement("h_span", "span1")
+                return new _HTMLSpanElement("h_span")
             } else if (arguments[0] === "canvas") {
-                return new _HTMLCanvasElement("h_canva", "canva1")
+                return new _HTMLCanvasElement("h_canva")
+            } else if (arguments[0] === "form") {
+                return new _HTMLFormElement("h_form")
+            } else if (arguments[0] === "input") {
+                return new _HTMLInputElement("h_input")
             }
 
         }
@@ -1342,7 +1361,7 @@ Object.defineProperty(_document.__proto__.__proto__, "createExpression", {
         h_log("[v] _document.__proto__.__proto__ createExpression value [get]", "arg:", arguments);
         return function (a, b) {
             h_log("[v] _document.__proto__.__proto__ createExpression value [call]", "arg:", arguments)
-            return new XPathExpression(a, b)
+            return new _XPathExpression(a, b)
         }
     }, enumerable: true, configurable: true
 });
@@ -1456,9 +1475,10 @@ Object.defineProperty(_document.__proto__.__proto__, "getElementById", {
         h_log("[v] _document.__proto__.__proto__ getElementById value [get]", "arg:", arguments);
         return function () {
             h_log("[v] _document.__proto__.__proto__ getElementById value [call]", "arg:", arguments)
-            if (arguments[0] === "root-hammerhead-shadow-ui") {
-                return null
+            if(arguments[0] === "HugPYbOHyOWN"){
+                return meta2
             }
+            return null
 
         }
     }, enumerable: true, configurable: true
@@ -1485,11 +1505,11 @@ Object.defineProperty(_document.__proto__.__proto__, "getElementsByTagName", {
         return function () {
             h_log("[v] _document.__proto__.__proto__ getElementsByTagName value [call]", "arg:", arguments)
             if (arguments[0] === "script") {
-                return [new HTMLScriptElement("script1"), new HTMLScriptElement("script2")]
+                return ProxyObj([script1, script2], "document.getElementsByTagName(script)", false)
             } else if (arguments[0] === "meta") {
-                return [new HTMLMetaElement("meta1"), new HTMLMetaElement("meta2")]
+                return ProxyObj([meta1, meta2], "document.getElementsByTagName(meta)", false)
             } else if (arguments[0] === "base") {
-                return []
+                return ProxyObj([], "document.getElementsByTagName(base)",false)
             }
         }
     }, enumerable: true, configurable: true
