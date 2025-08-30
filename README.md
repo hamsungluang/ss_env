@@ -1,6 +1,6 @@
 ## 补环境框架
 
-### 目前以过的环境
+### 目前已过的网站
 #### 抖音的a_bogus
 ```javascript
 m = n.apply(d, e); // 这下面增加代码
@@ -29,3 +29,4 @@ window.ActiveXObject = undefined;是个坑
 
 ### TODO:
 1. getElementsByTagName、getElementById、parentNode、parentElement、innerText等方法还是根据js返回什么补什么而实现的，需要灵活
+2. 浏览器指纹随机化

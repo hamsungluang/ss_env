@@ -1072,12 +1072,14 @@ Object.defineProperty(_base_dom.__proto__, "clientLeft", {
 });
 Object.defineProperty(_base_dom.__proto__, "clientWidth", {
     get: function () {
-        h_log("_base_dom.__proto__ clientWidth get [call]", "arg:", arguments)
+        h_log("_base_dom.__proto__ clientWidth get [call]", "arg:", arguments, "this---->", this)
+        return 1137
     }, set: undefined, enumerable: true, configurable: true,
 });
 Object.defineProperty(_base_dom.__proto__, "clientHeight", {
     get: function () {
         h_log("_base_dom.__proto__ clientHeight get [call]", "arg:", arguments)
+        return 680
     }, set: undefined, enumerable: true, configurable: true,
 });
 Object.defineProperty(_base_dom.__proto__, "onbeforecopy", {

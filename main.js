@@ -1,45 +1,26 @@
-const {VM} = require("vm2");
+const { VM } = require("vm2");
 const fs = require("fs");
 const xhr2 = require("xhr2");
 const v8 = require('v8');
 const _vm = require('vm');
+let code = require('./env_loader');
+const CONFIG = require('./config');
 v8.setFlagsFromString('--allow-natives-syntax');
 let undetectable = _vm.runInThisContext("%GetUndetectable()");
 v8.setFlagsFromString('--no-allow-natives-syntax');
 
-const CONFIG = {}
-
-// CONFIG.DEBUG = true
-CONFIG.DEBUG = false
-
-let urlString
-if (CONFIG.DEBUG === false) {
-    urlString = "arg_urlString";
-} else {
-    //urlString ="https://sugh.szu.edu.cn/Html/News/Columns/7/2.html";
-    urlString = "https://fzgg.gansu.gov.cn/fzgg/tzgg/list.shtml";
-    //urlString = "https://www.douyin.com/video/7487819295116823808";
-}
-
-
-const url = new URL(urlString);
-CONFIG.LOCATION = {
-    ancestorOrigins: {},
-    href: url.href,
-    origin: url.origin,
-    protocol: url.protocol,
-    host: url.host,
-    hostname: url.hostname,
-    port: url.port,
-    pathname: url.pathname,
-    search: url.search,
-    hash: url.hash
-};
-
 
 const vm = new VM({
     sandbox: {
-        h_log: CONFIG.DEBUG ? console.log : function () {
+        h_log: CONFIG.DEBUG ? function(...args) {
+            if (!CONFIG.DEBUG_INCLUDE_WINDOW) {
+                const hasVWindow = args.some(arg => typeof arg === 'string' && arg.includes('[v] window'));
+                const hasGet = args.some(arg => typeof arg === 'string' && arg.includes('[get]'));
+                
+                if (hasVWindow && hasGet) return;
+            }
+            console.log.apply(console, args);
+        } : function () {
         },
         config_LOCATION: CONFIG.LOCATION,
         MessageChannel: MessageChannel,
@@ -58,65 +39,33 @@ const vm = new VM({
 });
 
 
-let code = ""
-// 加载框架代码
-code += fs.readFileSync("./env/utils/tools.js", "utf-8")
-code += fs.readFileSync("./env/init.js", "utf-8")
-code += fs.readFileSync("./env/public/eventTarget.js", "utf-8")
-code += fs.readFileSync("./env/bom/indexedDB.js", "utf-8")
-code += fs.readFileSync("./env/bom/XMLHttpRequest.js", "utf-8")
-code += fs.readFileSync("./env/bom/Request.js", "utf-8")
-code += fs.readFileSync("./env/bom/performance.js", "utf-8")
-code += fs.readFileSync("./env/bom/EventSource.js", "utf-8")
-code += fs.readFileSync("./env/bom/WebSocket.js", "utf-8")
-code += fs.readFileSync("./env/bom/NetworkInformation.js", "utf-8")
-code += fs.readFileSync("./env/bom/NavigatorUAData.js", "utf-8")
-code += fs.readFileSync("./env/bom/StorageManager.js", "utf-8")
-code += fs.readFileSync("./env/bom/BatteryManager.js", "utf-8")
-code += fs.readFileSync("./env/bom/history.js", "utf-8")
-code += fs.readFileSync("./env/bom/screen.js", "utf-8")
-code += fs.readFileSync("./env/bom/plugins.js", "utf-8")
-code += fs.readFileSync("./env/bom/navigator.js", "utf-8")
-code += fs.readFileSync("./env/bom/location.js", "utf-8")
-code += fs.readFileSync("./env/dom/dom.js", "utf-8")
-code += fs.readFileSync("./env/dom/DOMTokenList.js", "utf-8")
-code += fs.readFileSync("./env/dom/DOMParser.js", "utf-8")
-code += fs.readFileSync("./env/dom/Element/HTMLAnchorElement.js", "utf-8")
-code += fs.readFileSync("./env/dom/Element/HTMLFormElement.js", "utf-8")
-code += fs.readFileSync("./env/dom/Element/HTMLInputElement.js", "utf-8")
-code += fs.readFileSync("./env/dom/Element/HTMLAudioElement.js", "utf-8")
-code += fs.readFileSync("./env/dom/Element/HTMLBodyElement.js", "utf-8")
-code += fs.readFileSync("./env/dom/Element/HTMLDivElement.js", "utf-8")
-code += fs.readFileSync("./env/dom/Element/HTMLHeadElement.js", "utf-8")
-code += fs.readFileSync("./env/dom/Element/HTMLHtmlElement.js", "utf-8")
-code += fs.readFileSync("./env/dom/Element/HTMLMetaElement.js", "utf-8")
-code += fs.readFileSync("./env/dom/Element/HTMLScriptElement.js", "utf-8")
-code += fs.readFileSync("./env/dom/Element/HTMLSpanElement.js", "utf-8")
-code += fs.readFileSync("./env/dom/Element/canvas_2d.js", "utf-8")
-code += fs.readFileSync("./env/dom/Element/HTMLCanvasElement.js", "utf-8")
-code += fs.readFileSync("./env/dom/text.js", "utf-8")
-code += fs.readFileSync("./env/dom/document.js", "utf-8")
-code += fs.readFileSync("./env/bom/window.js", "utf-8")
-code += fs.readFileSync("./env/html_init.js", "utf-8")
-if (CONFIG.DEBUG === false) {
-    code += `meta2["_content"] = "arg_content";` // rs6 content 参数传参
-}
-code = `(function(){${code}})();` + "\n" + "/* ------环境加载完成------ */\n" + "debugger;\n"
 
-
-// // ----------------加载抖音js------------------------------
+// ----------------加载抖音js------------------------------
 // code += fs.readFileSync("./work/bdms.js", "utf-8")
 
 
 // --------------加载rs6----------------------------------------
-code += fs.readFileSync("./work/rs6.js", "utf-8")
-code += fs.readFileSync("./work/rs6_ts.js", "utf-8")
+// code += fs.readFileSync("./work/rs6.js", "utf-8")
+// code += fs.readFileSync("./work/rs6_ts.js", "utf-8")
+// code += 'document.cookie;'
+
+
+// --------------加载zp_stoken----------------------------------------
+code += fs.readFileSync("./work/__zp_stoken__.js", "utf-8")
+if (CONFIG.DEBUG === true) {
+    code += `t = "rwclXXRSpoLviCPkW+/LLtV9DvgcO4cbUI9Q1HvD88b4rKbSZifvZPNZeH1lECpKKW6hAImTC/6NvqNskhWywQ=="
+i = "1756347222269"
+n = (new window.ABC).z(t, parseInt(i) + 60 * (480 + (new Date).getTimezoneOffset()) * 1e3)
+result = encodeURIComponent(n)`
+} else {
+    code += `n = (new window.ABC).z("arg_seed", parseInt("arg_ts") + 60 * (480 + (new Date).getTimezoneOffset()) * 1e3);result = encodeURIComponent(n)`
+}
 
 
 // 可留可不留
-code = `try{${code};}catch(e){h_log(e);debugger;};`
-code += 'document.cookie;'
+// code = `try{${code};}catch(e){h_log(e);debugger;};`
 
-a_bougs = vm.run(code);
-console.log(a_bougs)
-// process.exit()
+
+result = vm.run(code);
+console.log(result)
+process.exit()

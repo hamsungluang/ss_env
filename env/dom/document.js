@@ -156,7 +156,7 @@ Object.defineProperty(_document.__proto__.__proto__, "dir", {
 Object.defineProperty(_document.__proto__.__proto__, "body", {
     get: function () {
         h_log("_document.__proto__.__proto__ body get [call]", "arg:", arguments)
-        return null
+        return body1
     }, set: function () {
         h_log("_document.__proto__.__proto__ body set [call]", "arg:", arguments)
     }, enumerable: true, configurable: true,
@@ -269,9 +269,10 @@ Object.defineProperty(_document.__proto__.__proto__, "bgColor", {
 
 let document_all = {}
 document_all.__proto__ = {
-    [Symbol.toStringTag] : "HTMLAllCollection",
+    [Symbol.toStringTag]: "HTMLAllCollection",
 }
-let _HTMLAllCollection = function () {}
+let _HTMLAllCollection = function () {
+}
 _HTMLAllCollection.prototype = document_all.__proto__
 document_all = ProxyObj(document_all, "document.all")
 Object.defineProperty(_document.__proto__.__proto__, "all", {
@@ -1308,8 +1309,9 @@ Object.defineProperty(_document.__proto__.__proto__, "createElement", {
                 return new _HTMLFormElement("h_form")
             } else if (arguments[0] === "input") {
                 return new _HTMLInputElement("h_input")
+            } else if (arguments[0] === "iframe") {
+                return new _HTMLIFrameElement("h_iframe")
             }
-
         }
     }, enumerable: true, configurable: true
 });
@@ -1475,7 +1477,7 @@ Object.defineProperty(_document.__proto__.__proto__, "getElementById", {
         h_log("[v] _document.__proto__.__proto__ getElementById value [get]", "arg:", arguments);
         return function () {
             h_log("[v] _document.__proto__.__proto__ getElementById value [call]", "arg:", arguments)
-            if(arguments[0] === "HugPYbOHyOWN"){
+            if (arguments[0] === "HugPYbOHyOWN") {
                 return meta2
             }
             return null
@@ -1509,7 +1511,7 @@ Object.defineProperty(_document.__proto__.__proto__, "getElementsByTagName", {
             } else if (arguments[0] === "meta") {
                 return ProxyObj([meta1, meta2], "document.getElementsByTagName(meta)", false)
             } else if (arguments[0] === "base") {
-                return ProxyObj([], "document.getElementsByTagName(base)",false)
+                return ProxyObj([], "document.getElementsByTagName(base)", false)
             }
         }
     }, enumerable: true, configurable: true

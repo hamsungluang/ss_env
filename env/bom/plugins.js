@@ -33,6 +33,7 @@ _plugins.__proto__ = {};
 Object.defineProperty(_plugins.__proto__, "length", {
     get: function () {
         h_log("_plugins.__proto__ length get [call]", "arg:", arguments)
+        return 5
     }, set: undefined, enumerable: true, configurable: true,
 });
 Object.defineProperty(_plugins.__proto__, "item", {

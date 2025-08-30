@@ -3176,9 +3176,7 @@ Object.defineProperty(window, "HTMLImageElement", {
 Object.defineProperty(window, "HTMLIFrameElement", {
     get: function () {
         h_log("[v] window HTMLIFrameElement value [get]", "arg:", arguments);
-        return function () {
-            h_log("[v] window HTMLIFrameElement value [call]", "arg:", arguments)
-        }
+        return _HTMLIFrameElement
     }, enumerable: false, configurable: true
 });
 
