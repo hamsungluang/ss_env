@@ -13,6 +13,7 @@ Object.defineProperty(_navigator.__proto__, "productSub", {
 Object.defineProperty(_navigator.__proto__, "vendor", {
     get: function () {
         h_log("_navigator.__proto__ vendor get [call]", "arg:", arguments)
+        return 'Google Inc.'
     }, set: undefined, enumerable: true, configurable: true,
 });
 Object.defineProperty(_navigator.__proto__, "maxTouchPoints", {
@@ -50,13 +51,23 @@ Object.defineProperty(_navigator.__proto__, "connection", {
 Object.defineProperty(_navigator.__proto__, "plugins", {
     get: function () {
         h_log("_navigator.__proto__ plugins get [call]", "arg:", arguments)
-        return _plugins
+        return ProxyObj({
+            __proto__: {},
+            constructor: function PluginArray() {
+            },
+            length:5
+        }, "navigator.plugins", true)
     }, set: undefined, enumerable: true, configurable: true,
 });
 Object.defineProperty(_navigator.__proto__, "mimeTypes", {
     get: function () {
         h_log("_navigator.__proto__ mimeTypes get [call]", "arg:", arguments)
-        return ProxyObj({}, "navigator.mimeTypes")
+        return ProxyObj({
+            constructor: function MimeTypeArray() {
+            },
+            length: 2,
+            __proto__: {},
+        }, "navigator.mimeTypes", true)
     }, set: undefined, enumerable: true, configurable: true,
 });
 Object.defineProperty(_navigator.__proto__, "pdfViewerEnabled", {
@@ -148,12 +159,13 @@ Object.defineProperty(_navigator.__proto__, "userAgent", {
 Object.defineProperty(_navigator.__proto__, "language", {
     get: function () {
         h_log("_navigator.__proto__ language get [call]", "arg:", arguments)
+        return 'en-US'
     }, set: undefined, enumerable: true, configurable: true,
 });
 Object.defineProperty(_navigator.__proto__, "languages", {
     get: function () {
         h_log("_navigator.__proto__ languages get [call]", "arg:", arguments)
-        return ['zh-CN', 'zh']
+        return ["en-US", "zh-CN", "zh", "en"]
     }, set: undefined, enumerable: true, configurable: true,
 });
 Object.defineProperty(_navigator.__proto__, "onLine", {

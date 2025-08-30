@@ -1,10 +1,25 @@
-DEBUG = false
-// DEBUG = true
+const CONFIG = {};
 
-const urlString = "https://fzgg.gansu.gov.cn/fzgg/tzgg/list.shtml";
-// const urlString = "https://www.douyin.com/video/7487819295116823808";
+CONFIG.DEBUG = true;
+// CONFIG.DEBUG = false;
+
+// 为false时，不输出window下方法的gatter
+CONFIG.DEBUG_INCLUDE_WINDOW = true;
+CONFIG.DEBUG_INCLUDE_WINDOW = false;
+
+let urlString;
+if (CONFIG.DEBUG === false) {
+    urlString = "arg_urlString";
+} else {
+    //urlString ="https://sugh.szu.edu.cn/Html/News/Columns/7/2.html";
+    //urlString = "https://fzgg.gansu.gov.cn/fzgg/tzgg/list.shtml";
+    // urlString = "https://www.douyin.com/video/7487819295116823808";
+    urlString = "https://www.zhipin.com/job_detail/a26cc8b0574df54a1HJ_0967EldQ.html?ka=index_rcmd_job_1";
+}
+
+
 const url = new URL(urlString);
-const LOCATION = {
+CONFIG.LOCATION = {
     ancestorOrigins: {},
     href: url.href,
     origin: url.origin,
@@ -16,5 +31,5 @@ const LOCATION = {
     search: url.search,
     hash: url.hash
 };
-exports.DEBUG = DEBUG
-exports.LOCATION = LOCATION
+
+module.exports = CONFIG;

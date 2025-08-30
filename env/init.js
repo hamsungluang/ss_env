@@ -62,6 +62,18 @@ Function.prototype.toString = function () {
         h_log(`Function toString ${this.name} 被调用`)
         h_log(`返回：` + 'function eval() { [native code] }')
         return 'function eval() { [native code] }'
+    } else if (this.name === "MimeTypeArray") {
+        h_log(`Function toString ${this.name} 被调用`)
+        h_log(`返回：` + 'function MimeTypeArray() { [native code] }')
+        return 'function MimeTypeArray() { [native code] }'
+    } else if (this.name === "PluginArray") {
+        h_log(`Function toString ${this.name} 被调用`)
+        h_log(`返回：` + 'function PluginArray() { [native code] }')
+        return 'function PluginArray() { [native code] }'
+    } else if (this.name === "Window") {
+        h_log(`Function toString ${this.name} 被调用`)
+        h_log(`返回：` + 'function Window() { [native code] }')
+        return 'function Window() { [native code] }'
     } else if (_lp_func_toString.call(this).includes("XMLHttpRequest.prototype send")) {
         h_log(`Function toString ${this.name} 被调用`)
         h_log(`返回：` + 'function send() { [native code] }')
@@ -91,3 +103,4 @@ let body_count = 1;
 let a_count = 1;
 let form_count = 1;
 let input_count = 1;
+let iframe_count = 1;
