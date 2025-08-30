@@ -2,29 +2,17 @@ import requests
 
 
 headers = {
-    # "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
-    # "Accept-Language": "en-US,en;q=0.9",
-    # "Cache-Control": "no-cache",
-    # "Connection": "keep-alive",
-    # "Pragma": "no-cache",
-    # "Referer": "https://fzgg.gansu.gov.cn/fzgg/tzgg/list.shtml",
-    # "Sec-Fetch-Dest": "document",
-    # "Sec-Fetch-Mode": "navigate",
-    # "Sec-Fetch-Site": "same-origin",
-    # "Upgrade-Insecure-Requests": "1",
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
-    # "sec-ch-ua": "\"Not)A;Brand\";v=\"8\", \"Chromium\";v=\"138\", \"Google Chrome\";v=\"138\"",
-    # "sec-ch-ua-mobile": "?0",
-    # "sec-ch-ua-platform": "\"Windows\""
+    "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
 }
 cookies = {
-    # "Path": "/",
-    "4hP44ZykCTt5O": "600IZ5dbm.IRkYPZh3p0UKOCXZZ3TlYD0hwUWaMUjtpqwKzJNFibZ5GiftDx4k.O2Pz1BRjoEQtiKe685ZCWTvSa",
-    # "7d0f4f97e8317b129e": "3601cf1eb5196db6546ba2733010c134",
-    "4hP44ZykCTt5P": "0CGO0Hv5mzgzl7s6.39VydppBehQJG9RThIgo9XkorgYSq9TulEeH0C4tWGx9Zm8icZdxX0pOApToa4Am7BZ.RN7bwfRMER5.cHiFcM2CnhDSFkt3IqiIX4EqKQW0zdfbehp.jP.S1FCiYHij_370WdjImbg7JAXwjRlaYFaZyOe.xcMFBbOv0uarZK550C.jS8vsgpgBnD.wvJAYCXXEogicRU.oORctTvKmD0xGgifnXtNNHrrAD1xECDXYo66U"
+    "__zp_stoken__": "91d9fw4TDiMKdVjkPB2B3V0zCvWHCuFdGVkPCuMKkcMKsUVtZwq1Fb8KBwrNewpfCq8KUwrzCrE7DgsKswpHCqsKlVcKFR8KOwq%2FCv8KlwpHCusKjwqjChsK5w7vCpcKvYMKJwr3CkMOBwp3ChMOWSMO7wqLDsMKewpFNw43ClMOLw7XDscKyw6HDucSlwp7EqMKtw5HDusSpwpTDhMKixKnCpsSTwpfElcKxw43FqMSbxKbFjcKnxKTCtcKYOS8DCAkJBw8MDQ0LBAcNDQsMDxISEAwPEhIQNTHDtMKdw5kzNz00JFFOSwZQYmBEYUQIWkNFNjYNXQQMNis0NDY6wrs0wrcGw4A1wrcEwrw6wrpUND46NcK6woEpJ8K4SwjCtsK9CQ0IDQbCuD8Iw4ZiwoPChwQ%2BLTc6wrTEtT84Fj43Mz45OT4zOCY5GsOKXcKGwocGFCg0GT8zOEI3NzM4QDk9Jzg8JSUzNSQ9BxAQEQ0oQMK5wpvCtMOhMzg%3D"
 }
-url = "https://fzgg.gansu.gov.cn/fzgg/tzgg/list.shtml"
-response = requests.get(url, headers=headers, cookies=cookies)
+url = "https://www.zhipin.com/wapi/zpgeek/job/detail.json"
+params = {
+    "securityId": "oJ3suR_LBmtZw-p11SDfSMzXs4fnaen3i9KZaYBjorRNwEX4maX7ncd5B4m_0vUdIEcT3rNTgrF2b2B5ALjuZ478MqRN1BZT9wAAGTSreOcPnLBgqMRakN1pJNBegVlQPkOzfeD5zGHFxsgIK4ZugtpWnMKouQ~~",
+    "lid": "aJ1xYF8FIXJ.search.2"
+}
+response = requests.get(url, headers=headers, cookies=cookies, params=params)
 
 print(response.text)
 print(response)

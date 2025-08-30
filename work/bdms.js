@@ -7992,28 +7992,9 @@ let get_abgous = function () {
             ]
         }
     ];
-    // xhr.invokeList = [
-    //     {
-    //         "name": "addEventListener",
-    //         "args": [
-    //             "load",
-    //             null
-    //         ]
-    //     },
-    //     {
-    //         "name": "addEventListener",
-    //         "args": [
-    //             "error",
-    //             null
-    //         ]
-    //     }
-    // ];
-    // xhr._vc_status = 1;
+
     xhr.send(null)
-    // process = process_
-    // h_log(window.a_bogus)
     return window.a_bogus
 }
 a_bougs = get_abgous()
-// a_bougs = get_abgous("device_platform=webapp&aid=6383&channel=channel_pc_web&aweme_id=7487819295116823808&update_version_code=170400&pc_client_type=1&pc_libra_divert=Windows&support_h265=1&support_dash=1&cpu_core_num=8&version_code=190500&version_name=19.5.0&cookie_enabled=true&screen_width=1536&screen_height=864&browser_language=en-US&browser_platform=Win32&browser_name=Chrome&browser_version=138.0.0.0&browser_online=true&engine_name=Blink&engine_version=138.0.0.0&os_name=Windows&os_version=10&device_memory=8&platform=PC&downlink=10&effective_type=4g&round_trip_time=50&webid=7493790376601454116&uifid=1ee16134db40129a5ff28e6a352dddaa8524f48fc5e4ea6d697d6a182d7836e4d877a37be48e2e96358ef2f4ae9d4096730f7cc1736d4d69b5f932a40e328db8466acb1a0847d688611f0c6db7eda93f2b5f7475490c0e9a2a9268a2a8e813482bad02506e535b66e93fa0dd7452574bf6e60be564b406f6b839213e59618b1aa2c34f63519a17b1046eac947d36d9deab36b2f7080fed47872bef3386962c65&msToken=VreIjlNgj_0ie6WMPm1mNe1y_h-inryUs80Z8YiB2Prz1UWNQu89SGdJYknn_NuMVC2VXwD5-o_E1n_EydWrEBhLGmbK1y0osV71Klf8dlfKnf0Q_unXtw3I_VtYGyI9y9dX_iXp6U8NS_g4aKDg6e32Q6cLlqZogj1lH2z_pEwKytf4sNvYEII=&verifyFp=verify_mbyg1p37_ES3ouIxg_DprN_4ndq_BvKv_qtaGAOhpJrFJ&fp=verify_mbyg1p37_ES3ouIxg_DprN_4ndq_BvKv_qtaGAOhpJrFJ&x-secsdk-web-expire=1752564358277&x-secsdk-web-signature=eedce58eaa692c6e24048a3e91f35f72")
 
