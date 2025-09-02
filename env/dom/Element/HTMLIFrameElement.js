@@ -56,10 +56,12 @@ Object.defineProperty(_iframe_dom.__proto__, "contentDocument", {
 });
 Object.defineProperty(_iframe_dom.__proto__, "contentWindow", {
     get: function () {
-        h_log("_iframe_dom.__proto__ contentWindow get [call]", "arg:", arguments)
+        h_log("_iframe_dom.__proto__ contentWindow get [call]", "arg:", arguments, "this---->", this.tag_arg)
         if (body1._children['iframe1']){
+            h_log("_iframe_dom.__proto__ contentWindow get [result]", "globalThis")
             return globalThis
         }
+        h_log("_iframe_dom.__proto__ contentWindow get [result]", "null")
         return null
     }, set: undefined, enumerable: true, configurable: true,
 });

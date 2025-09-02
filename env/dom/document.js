@@ -265,38 +265,12 @@ Object.defineProperty(_document.__proto__.__proto__, "bgColor", {
         h_log("_document.__proto__.__proto__ bgColor set [call]", "arg:", arguments)
     }, enumerable: true, configurable: true,
 });
-
-
-let document_all = {}
-document_all.__proto__ = {
-    [Symbol.toStringTag]: "HTMLAllCollection",
-}
-let _HTMLAllCollection = function () {
-}
-_HTMLAllCollection.prototype = document_all.__proto__
-document_all = ProxyObj(document_all, "document.all")
 Object.defineProperty(_document.__proto__.__proto__, "all", {
     get: function () {
         h_log("_document.__proto__.__proto__ all get [call]", "arg:", arguments)
-        return undetectable
+        return document_all
     }, set: undefined, enumerable: true, configurable: true,
 });
-Object.defineProperty(_document.__proto__.__proto__.all, 'length', {
-    get: function () {
-        console.log('document.all.length ------------------------------------->')
-    }
-})
-Object.defineProperty(_document.__proto__.__proto__.all, 0, {
-    get: function () {
-        console.log('document.all.0 ------------------------------------->')
-    }
-})
-Object.defineProperty(_document.__proto__.__proto__.all, 1, {
-    get: function () {
-        console.log('document.all.1 ------------------------------------->')
-    }
-})
-
 Object.defineProperty(_document.__proto__.__proto__, "scrollingElement", {
     get: function () {
         h_log("_document.__proto__.__proto__ scrollingElement get [call]", "arg:", arguments)

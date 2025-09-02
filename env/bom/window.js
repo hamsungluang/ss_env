@@ -2387,9 +2387,7 @@ Object.defineProperty(window, "MouseEvent", {
 Object.defineProperty(window, "MimeTypeArray", {
     get: function () {
         h_log("[v] window MimeTypeArray value [get]", "arg:", arguments);
-        return function () {
-            h_log("[v] window MimeTypeArray value [call]", "arg:", arguments)
-        }
+        return _MimeTypeArray
     }, enumerable: false, configurable: true
 });
 Object.defineProperty(window, "MimeType", {
@@ -4077,6 +4075,13 @@ Object.defineProperty(window, "CSSRule", {
         h_log("[v] window CSSRule value [get]", "arg:", arguments);
         return function () {
             h_log("[v] window CSSRule value [call]", "arg:", arguments)
+            if (arguments.length === 0) {
+                if (new.target) {
+                    throw new TypeError("Failed to construct 'CSSRule': Illegal constructor");
+                } else {
+                    throw new TypeError("Illegal constructor");
+                }
+            }
         }
     }, enumerable: false, configurable: true
 });
@@ -4703,7 +4708,7 @@ Object.defineProperty(window, "length", {
 Object.defineProperty(window, "top", {
     get: function () {
         h_log("window top get [call]", "arg:", arguments)
-        return globalThis
+        return window_top
     }, set: undefined, enumerable: true, configurable: false,
 });
 Object.defineProperty(window, "opener", {
@@ -4717,7 +4722,7 @@ Object.defineProperty(window, "opener", {
 Object.defineProperty(window, "parent", {
     get: function () {
         h_log("window parent get [call]", "arg:", arguments)
-        return globalThis
+        return window_top
     }, set: function () {
         h_log("window parent set [call]", "arg:", arguments)
     }, enumerable: true, configurable: true,
@@ -4795,7 +4800,7 @@ Object.defineProperty(window, "screen", {
 Object.defineProperty(window, "innerWidth", {
     get: function () {
         h_log("window innerWidth get [call]", "arg:", arguments)
-        return 1128
+        return 0
     }, set: function () {
         h_log("window innerWidth set [call]", "arg:", arguments)
     }, enumerable: true, configurable: true,
@@ -4803,7 +4808,7 @@ Object.defineProperty(window, "innerWidth", {
 Object.defineProperty(window, "innerHeight", {
     get: function () {
         h_log("window innerHeight get [call]", "arg:", arguments)
-        return 695
+        return 0
     }, set: function () {
         h_log("window innerHeight set [call]", "arg:", arguments)
     }, enumerable: true, configurable: true,

@@ -51,23 +51,13 @@ Object.defineProperty(_navigator.__proto__, "connection", {
 Object.defineProperty(_navigator.__proto__, "plugins", {
     get: function () {
         h_log("_navigator.__proto__ plugins get [call]", "arg:", arguments)
-        return ProxyObj({
-            __proto__: {},
-            constructor: function PluginArray() {
-            },
-            length:5
-        }, "navigator.plugins", true)
+        return _plugins
     }, set: undefined, enumerable: true, configurable: true,
 });
 Object.defineProperty(_navigator.__proto__, "mimeTypes", {
     get: function () {
         h_log("_navigator.__proto__ mimeTypes get [call]", "arg:", arguments)
-        return ProxyObj({
-            constructor: function MimeTypeArray() {
-            },
-            length: 2,
-            __proto__: {},
-        }, "navigator.mimeTypes", true)
+        return _mimeTypes
     }, set: undefined, enumerable: true, configurable: true,
 });
 Object.defineProperty(_navigator.__proto__, "pdfViewerEnabled", {

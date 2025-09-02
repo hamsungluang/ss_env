@@ -1,13 +1,38 @@
 const { VM } = require("vm2");
 const fs = require("fs");
-const xhr2 = require("xhr2");
+// const xhr2 = require("xhr2");
 const v8 = require('v8');
 const _vm = require('vm');
 let code = require('./env_loader');
-const CONFIG = require('./config');
+let CONFIG = require('./config');
 v8.setFlagsFromString('--allow-natives-syntax');
 let undetectable = _vm.runInThisContext("%GetUndetectable()");
 v8.setFlagsFromString('--no-allow-natives-syntax');
+
+
+let urlString;
+if (CONFIG.DEBUG === false) {
+    urlString = "arg_urlString";
+} else {
+    //urlString ="https://sugh.szu.edu.cn/Html/News/Columns/7/2.html";
+    //urlString = "https://fzgg.gansu.gov.cn/fzgg/tzgg/list.shtml";
+    // urlString = "https://www.douyin.com/video/7487819295116823808";
+    // urlString = "https://www.zhipin.com/job_detail/a26cc8b0574df54a1HJ_0967EldQ.html?ka=index_rcmd_job_1";
+    urlString = "about:blank";
+}
+const url = new URL(urlString);
+CONFIG.LOCATION = {
+    ancestorOrigins: {},
+    href: url.href,
+    origin: url.origin,
+    protocol: url.protocol,
+    host: url.host,
+    hostname: url.hostname,
+    port: url.port,
+    pathname: url.pathname,
+    search: url.search,
+    hash: url.hash
+};
 
 
 const vm = new VM({
@@ -60,6 +85,10 @@ result = encodeURIComponent(n)`
 } else {
     code += `n = (new window.ABC).z("arg_seed", parseInt("arg_ts") + 60 * (480 + (new Date).getTimezoneOffset()) * 1e3);result = encodeURIComponent(n)`
 }
+
+
+// --------------debug_test----------------------------------------
+// code += fs.readFileSync("./test/debug_test.js", "utf-8")
 
 
 // 可留可不留
