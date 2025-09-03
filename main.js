@@ -3,7 +3,6 @@ const fs = require("fs");
 // const xhr2 = require("xhr2");
 const v8 = require('v8');
 const _vm = require('vm');
-let code = require('./env_loader');
 let CONFIG = require('./config');
 v8.setFlagsFromString('--allow-natives-syntax');
 let undetectable = _vm.runInThisContext("%GetUndetectable()");
@@ -14,11 +13,11 @@ let urlString;
 if (CONFIG.DEBUG === false) {
     urlString = "arg_urlString";
 } else {
-    //urlString ="https://sugh.szu.edu.cn/Html/News/Columns/7/2.html";
-    //urlString = "https://fzgg.gansu.gov.cn/fzgg/tzgg/list.shtml";
+    urlString ="https://sugh.szu.edu.cn/Html/News/Columns/7/2.html";
+    // urlString = "https://fzgg.gansu.gov.cn/fzgg/tzgg/list.shtml";
     // urlString = "https://www.douyin.com/video/7487819295116823808";
     // urlString = "https://www.zhipin.com/job_detail/a26cc8b0574df54a1HJ_0967EldQ.html?ka=index_rcmd_job_1";
-    urlString = "about:blank";
+    // urlString = "about:blank";
 }
 const url = new URL(urlString);
 CONFIG.LOCATION = {
@@ -64,35 +63,86 @@ const vm = new VM({
 });
 
 
+let code = "";
+// 加载框架代码
+code += fs.readFileSync("./env/utils/tools.js", "utf-8");
+code += fs.readFileSync("./env/init.js", "utf-8");
+code += fs.readFileSync("./env/public/eventTarget.js", "utf-8");
+code += fs.readFileSync("./env/bom/indexedDB.js", "utf-8");
+code += fs.readFileSync("./env/bom/XMLHttpRequest.js", "utf-8");
+code += fs.readFileSync("./env/bom/Request.js", "utf-8");
+code += fs.readFileSync("./env/bom/performance.js", "utf-8");
+code += fs.readFileSync("./env/bom/EventSource.js", "utf-8");
+code += fs.readFileSync("./env/bom/WebSocket.js", "utf-8");
+code += fs.readFileSync("./env/bom/NetworkInformation.js", "utf-8");
+code += fs.readFileSync("./env/bom/NavigatorUAData.js", "utf-8");
+code += fs.readFileSync("./env/bom/StorageManager.js", "utf-8");
+code += fs.readFileSync("./env/bom/BatteryManager.js", "utf-8");
+code += fs.readFileSync("./env/bom/history.js", "utf-8");
+code += fs.readFileSync("./env/bom/screen.js", "utf-8");
+code += fs.readFileSync("./env/bom/plugins.js", "utf-8");
+code += fs.readFileSync("./env/bom/mimeTypes.js", "utf-8");
+code += fs.readFileSync("./env/bom/navigator.js", "utf-8");
+code += fs.readFileSync("./env/bom/location.js", "utf-8");
+code += fs.readFileSync("./env/dom/dom.js", "utf-8");
+code += fs.readFileSync("./env/dom/DOMTokenList.js", "utf-8");
+code += fs.readFileSync("./env/dom/DOMParser.js", "utf-8");
+code += fs.readFileSync("./env/dom/Element/HTMLAnchorElement.js", "utf-8");
+code += fs.readFileSync("./env/dom/Element/HTMLFormElement.js", "utf-8");
+code += fs.readFileSync("./env/dom/Element/HTMLInputElement.js", "utf-8");
+code += fs.readFileSync("./env/dom/Element/HTMLAudioElement.js", "utf-8");
+code += fs.readFileSync("./env/dom/Element/HTMLBodyElement.js", "utf-8");
+code += fs.readFileSync("./env/dom/Element/HTMLDivElement.js", "utf-8");
+code += fs.readFileSync("./env/dom/Element/HTMLHeadElement.js", "utf-8");
+code += fs.readFileSync("./env/dom/Element/HTMLHtmlElement.js", "utf-8");
+code += fs.readFileSync("./env/dom/Element/HTMLMetaElement.js", "utf-8");
+code += fs.readFileSync("./env/dom/Element/HTMLScriptElement.js", "utf-8");
+code += fs.readFileSync("./env/dom/Element/HTMLSpanElement.js", "utf-8");
+code += fs.readFileSync("./env/dom/Element/HTMLIFrameElement.js", "utf-8");
+code += fs.readFileSync("./env/dom/Element/canvas_2d.js", "utf-8");
+code += fs.readFileSync("./env/dom/Element/HTMLCanvasElement.js", "utf-8");
+code += fs.readFileSync("./env/dom/Collection/HTMLAllCollection.js", "utf-8");
+code += fs.readFileSync("./env/dom/text.js", "utf-8");
+code += fs.readFileSync("./env/dom/document.js", "utf-8");
+code += fs.readFileSync("./env/bom/window_top.js", "utf-8");
+code += fs.readFileSync("./env/bom/window.js", "utf-8");
+code += fs.readFileSync("./env/html_init.js", "utf-8");
+code = `(function(){${code}})();`  + "\n" + "/* ------环境加载完成------ */\n" + "debugger;\n"
+
+if (CONFIG.DEBUG === false) {
+    code += `meta2["_content"] = "arg_content";` // rs6 content 参数传参
+}
+
+// 可留可不留
+code = `try{${code};}catch(e){h_log(e);debugger;};`
 
 // ----------------加载抖音js------------------------------
 // code += fs.readFileSync("./work/bdms.js", "utf-8")
 
 
 // --------------加载rs6----------------------------------------
-// code += fs.readFileSync("./work/rs6.js", "utf-8")
-// code += fs.readFileSync("./work/rs6_ts.js", "utf-8")
-// code += 'document.cookie;'
+code += fs.readFileSync("./work/rs6.js", "utf-8")
+code += fs.readFileSync("./work/rs6_ts.js", "utf-8")
+code += 'document.cookie;'
 
 
 // --------------加载zp_stoken----------------------------------------
-code += fs.readFileSync("./work/__zp_stoken__.js", "utf-8")
-if (CONFIG.DEBUG === true) {
-    code += `t = "rwclXXRSpoLviCPkW+/LLtV9DvgcO4cbUI9Q1HvD88b4rKbSZifvZPNZeH1lECpKKW6hAImTC/6NvqNskhWywQ=="
-i = "1756347222269"
-n = (new window.ABC).z(t, parseInt(i) + 60 * (480 + (new Date).getTimezoneOffset()) * 1e3)
-result = encodeURIComponent(n)`
-} else {
-    code += `n = (new window.ABC).z("arg_seed", parseInt("arg_ts") + 60 * (480 + (new Date).getTimezoneOffset()) * 1e3);result = encodeURIComponent(n)`
-}
+// code += fs.readFileSync("./work/__zp_stoken__.js", "utf-8")
+// if (CONFIG.DEBUG === true) {
+//     code += `t = "rwclXXRSpoLviCPkW+/LLtV9DvgcO4cbUI9Q1HvD88b4rKbSZifvZPNZeH1lECpKKW6hAImTC/6NvqNskhWywQ=="
+// i = "1756347222269"
+// n = (new window.ABC).z(t, parseInt(i) + 60 * (480 + (new Date).getTimezoneOffset()) * 1e3)
+// result = encodeURIComponent(n)`
+// } else {
+//     code += `n = (new window.ABC).z("arg_seed", parseInt("arg_ts") + 60 * (480 + (new Date).getTimezoneOffset()) * 1e3);result = encodeURIComponent(n)`
+// }
 
 
 // --------------debug_test----------------------------------------
 // code += fs.readFileSync("./test/debug_test.js", "utf-8")
 
 
-// 可留可不留
-// code = `try{${code};}catch(e){h_log(e);debugger;};`
+
 
 
 result = vm.run(code);

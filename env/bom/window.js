@@ -4708,7 +4708,10 @@ Object.defineProperty(window, "length", {
 Object.defineProperty(window, "top", {
     get: function () {
         h_log("window top get [call]", "arg:", arguments)
-        return window_top
+        if (config_LOCATION.href === "about:blank"){
+            return window_top
+        }
+        return globalThis
     }, set: undefined, enumerable: true, configurable: false,
 });
 Object.defineProperty(window, "opener", {
@@ -4722,7 +4725,10 @@ Object.defineProperty(window, "opener", {
 Object.defineProperty(window, "parent", {
     get: function () {
         h_log("window parent get [call]", "arg:", arguments)
-        return window_top
+        if (config_LOCATION.href === "about:blank"){
+            return window_top
+        }
+        return globalThis
     }, set: function () {
         h_log("window parent set [call]", "arg:", arguments)
     }, enumerable: true, configurable: true,

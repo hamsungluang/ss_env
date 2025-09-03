@@ -22,8 +22,13 @@ session.headers.update({
 # 欧冶
 # url = "https://www.ouyeel.com/steel/search?pageIndex=0&pageSize=50"
 # 天津税务局登录页面
-url = "https://tpass.tianjin.chinatax.gov.cn:8443/#/login"
-
+# url = "https://tpass.tianjin.chinatax.gov.cn:8443/#/login"
+# 信用中国
+# url = "https://www.creditchina.gov.cn/"
+# 企业信用信息系统
+# url = "https://www.gsxt.gov.cn/"
+# 深圳市市场监督局（有jsl）
+url = "https://amr.sz.gov.cn/outer/doublePublic/list.html"
 
 parsed_url = urlparse(url)
 
