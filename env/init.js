@@ -1,14 +1,10 @@
-// const hook_prepareStackTrace = true;
-const hook_prepareStackTrace = false;
+const hook_prepareStackTrace = config_config.hook_prepareStackTrace;
 
-const hook_RegExp = true;
-// const hook_RegExp = false;
+const hook_RegExp = config_config.hook_RegExp;
 
-// const hook_ObjectToString = true;
-const hook_ObjectToString = false;
+const hook_ObjectToString = config_config.hook_ObjectToString;
 
-// const hook_ObjectKeys = true;
-const hook_ObjectKeys = false;
+const hook_ObjectKeys = config_config.hook_ObjectKeys;
 
 if (hook_ObjectKeys) {
   let _lp_obj_keys = Object.assign(Object.keys);
@@ -175,6 +171,7 @@ if (hook_RegExp) {
   };
 }
 
+// 记录元素创建次数
 let div_count = 1;
 let script_count = 1;
 let meta_count = 1;

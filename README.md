@@ -1,6 +1,27 @@
 ## 补环境框架
-
-### 实现功能
+### 项目结构
+```plainText
+ss_env/
+├── env/                    # 浏览器环境模拟
+│   ├── bom/               # 浏览器对象模型
+│   ├── dom/               # 文档对象模型
+│   ├── public/            # 公共功能
+│   ├── utils/             # 工具函数
+│   ├── html_init.js       # HTML初始化
+│   └── init.js            # 环境初始化
+├── tools/                 # 工具类
+│   ├── env_loader.js      # 环境加载器
+│   ├── func_tools.js      # 函数工具
+│   └── get_browser_env.js # 浏览器环境获取
+├── work/                  # 工作脚本
+├── test/                  # 测试目录
+├── get_data_demo/          # 数据获取示例
+├── mainv2.js              # 第二版主入口文件
+├── vm_runner.js           # VM运行器
+├── config.js              # 配置文件
+├── README.md              # 项目说明文档
+```
+### 项目功能
 #### document.all
 1. 无法通过delete删除元素
 2. typeof document.all === "undefined"

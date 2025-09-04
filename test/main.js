@@ -1,9 +1,8 @@
 const { VM } = require("vm2");
 const fs = require("fs");
-// const xhr2 = require("xhr2");
 const v8 = require('v8');
 const _vm = require('vm');
-let CONFIG = require('./config');
+let CONFIG = require('../config');
 v8.setFlagsFromString('--allow-natives-syntax');
 let undetectable = _vm.runInThisContext("%GetUndetectable()");
 v8.setFlagsFromString('--no-allow-natives-syntax');

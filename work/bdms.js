@@ -7950,51 +7950,5 @@ if (!window.bdms) {
         }(),
             window.bdms = n
     }();
-}
-
-let get_abgous = function () {
-    var t = {
-        "aid": 6383,
-        "pageId": 6241,
-        "paths": [
-            "^/webcast/",
-            "^/aweme/v1/",
-            "^/aweme/v2/",
-            "/v1/message/send",
-            "^/live/",
-            "^/captcha/",
-            "^/ecom/"
-        ],
-        "boe": false,
-        "ddrt": 8.5,
-        "ic": 8.5
-    }
-    window.bdms.init(t)
-    xhr = new XMLHttpRequest();
-    xhr.bdmsInvokeList = [
-        {
-            "args": [
-                "GET",
-                simon_url,
-                true
-            ]
-        },
-        {
-            "args": [
-                "Accept",
-                "application/json, text/plain, */*"
-            ]
-        },
-        {
-            "args": [
-                "uifid",
-                "163eead721bc91ca6f3a3cb4766a73c0638fabced1012e02c28bcbf3169aca5cb1348391d76f63e2f9da4d719c4da32217a9b2949c98efebcf51e3c9c7e1d0966c784065b26bf6b319b04de558d7cb318383c29fa3a83356e1edcec69ee2d2b9c261a4ab36ad07403666f4f2b321382d22bc25bc620e23bcf48eaac8ccce297a7305d63b5b82ddf5a8eb9dc5afb305639b5d8324a5feb6a13e74d04fbdcf11b6"
-            ]
-        }
-    ];
-
-    xhr.send(null)
-    return window.a_bogus
-}
-a_bougs = get_abgous()
+};
 

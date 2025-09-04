@@ -76,9 +76,9 @@ cookies = {
 
 
 def get_ab(url):
-    with open("../../main.js", "r", encoding="utf-8") as f:
+    with open("../../vm_runner.js", "r", encoding="utf-8") as f:
         js_code = f.read().replace("_simon_url", url).replace("arg_urlString", "https://www.douyin.com/jingxuan?modal_id=7541855142551850275")
-    result = subprocess.check_output(['node', '-e', js_code], cwd=js_dir)
+    result = subprocess.check_output(['node', '-e', js_code + "get_a_bogus();process.exit();"], cwd=js_dir)
     logger.info(f"a_bogus: {result}")
     return result
 

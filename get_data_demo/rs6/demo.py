@@ -14,7 +14,7 @@ session.headers.update({
 })
 
 # 深圳大学总医院
-# url = "https://sugh.szu.edu.cn/Html/News/Columns/7/2.html"
+url = "https://sugh.szu.edu.cn/Html/News/Columns/7/2.html"
 # 甘肃省发展和改革委员会
 # url = "https://fzgg.gansu.gov.cn/fzgg/tzgg/list.shtml"
 # 维普中文期刊服务平台
@@ -28,7 +28,7 @@ session.headers.update({
 # 企业信用信息系统
 # url = "https://www.gsxt.gov.cn/"
 # 深圳市市场监督局（有jsl）
-url = "https://amr.sz.gov.cn/outer/doublePublic/list.html"
+# url = "https://amr.sz.gov.cn/outer/doublePublic/list.html"
 
 parsed_url = urlparse(url)
 
@@ -57,9 +57,9 @@ def get_cookie(content, script, ts_url):
     script_ts = session.get(f"{parsed_url.scheme}://{parsed_url.netloc}" + ts_url).text
     with open("../../work/rs6_ts.js", 'w', encoding="utf-8") as f:
         f.write(script_ts)
-    with open("../../main.js", "r", encoding="utf-8") as f:
+    with open("../../vm_runner.js", "r", encoding="utf-8") as f:
         js_code = f.read().replace("arg_content", content).replace("arg_urlString", url)
-    result = subprocess.check_output(['node', '-e', js_code], cwd=js_dir)
+    result = subprocess.check_output(['node', '-e', js_code + "rs6();process.exit();"], cwd=js_dir)
     # logger.info(f"cookie: {result}")
     cookie_list = result.split(';')[0].split('=')
     cookie_name = cookie_list[0]

@@ -34,9 +34,9 @@ def get_data_first():
 def get_zp_stoken(data):
     seed = data["zpData"]["seed"]
     ts = data["zpData"]["ts"]
-    with open("../../main.js", "r", encoding="utf-8") as f:
+    with open("../../vm_runner.js", "r", encoding="utf-8") as f:
         js_code = f.read().replace("arg_urlString", arg_url).replace("arg_seed", seed).replace("arg_ts", str(ts))
-    stoken = subprocess.check_output(['node', '-e', js_code], cwd=js_dir).strip()
+    stoken = subprocess.check_output(['node', '-e', js_code + "get_zp_stoken();process.exit();"], cwd=js_dir).strip()
     # stoken = quote(result,safe='')
     logger.info(f"__zp_stoken__: {stoken}")
     logger.info(f"__zp_stoken__长度: {len(stoken)}")
