@@ -1,6 +1,6 @@
 const CONFIG = {};
 
-CONFIG.DEBUG = false;
+CONFIG.DEBUG = true;
 
 // 为false时，不输出window下方法的gatter
 // CONFIG.DEBUG_INCLUDE_WINDOW = true;

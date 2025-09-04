@@ -3,10 +3,7 @@ const v8 = require('v8');
 const _vm = require('vm');
 const { get_location } = require("./tools/func_tools");
 const EnvCodeLoader = require("./tools/env_loader");
-CONFIG = require('./config');
-v8.setFlagsFromString('--allow-natives-syntax');
-let undetectable = _vm.runInThisContext("%GetUndetectable()");
-v8.setFlagsFromString('--no-allow-natives-syntax');
+let CONFIG = require('./config');
 
 class VMRunner {
     constructor(urlString) {

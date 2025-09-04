@@ -22,6 +22,8 @@ ss_env/
 ├── README.md              # 项目说明文档
 ```
 ### 项目功能
+#### 原型链/Object toString/Function toString
+大部分对象实现了完整的原型链和toString方法，Function toString 通过hook改写
 #### document.all
 1. 无法通过delete删除元素
 2. typeof document.all === "undefined"
@@ -30,6 +32,9 @@ ss_env/
 5. length 动态计算
 #### 动态location.href功能
 传入href自动生成其他参数
+#### HTMLAnchorElement
+set a.href = "https://www.xxx.com";会自动生成其他url元素
+#### ...未完待续
 ---
 ### 实现网站
 #### 抖音的a_bogus
@@ -57,8 +62,9 @@ window.ActiveXObject = undefined;是个坑
 - 维普中文期刊服务平台
 - 欧冶
 - 天津税务局登录页面
+- ...
 #### boss
-成功率大概50%  
+成功率  
 ---
 ### TODO:
 1. getElementsByTagName、getElementById、parentNode、parentElement、innerText等方法还是根据js返回什么补什么而实现的，需要灵活
