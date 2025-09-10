@@ -34,7 +34,7 @@ function saveCodeToFile(code, filePath, encoding = 'utf8') {
         
         // 写入文件
         fs.writeFileSync(filePath, code, encoding);
-        console.log(`代码已成功保存到: ${filePath}`);
+        // console.log(`代码已成功保存到: ${filePath}`);
         return true;
     } catch (error) {
         console.error(`保存代码失败: ${error.message}`);
@@ -45,6 +45,7 @@ function saveCodeToFile(code, filePath, encoding = 'utf8') {
 
 module.exports = {
     get_location,
+    saveCodeToFile,
 }
 
 

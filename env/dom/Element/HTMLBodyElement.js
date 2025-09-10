@@ -66,6 +66,7 @@ Object.defineProperty(_body_dom.__proto__, "onfocus", {
 Object.defineProperty(_body_dom.__proto__, "onload", {
     get: function () {
         h_log("_body_dom.__proto__ onload get [call]", "arg:", arguments)
+        return null
     }, set: function () {
         h_log("_body_dom.__proto__ onload set [call]", "arg:", arguments)
     }, enumerable: true, configurable: true,

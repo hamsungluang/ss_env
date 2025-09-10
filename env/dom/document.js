@@ -156,7 +156,7 @@ Object.defineProperty(_document.__proto__.__proto__, "dir", {
 Object.defineProperty(_document.__proto__.__proto__, "body", {
     get: function () {
         h_log("_document.__proto__.__proto__ body get [call]", "arg:", arguments)
-        return body1
+        return null
     }, set: function () {
         h_log("_document.__proto__.__proto__ body set [call]", "arg:", arguments)
     }, enumerable: true, configurable: true,
@@ -1452,6 +1452,8 @@ Object.defineProperty(_document.__proto__.__proto__, "getElementById", {
         return function () {
             h_log("[v] _document.__proto__.__proto__ getElementById value [call]", "arg:", arguments)
             if (arguments[0] === "HugPYbOHyOWN") {
+                return meta2
+            }else if (arguments[0] === "rf62KBUrAJTi") {
                 return meta2
             }
             return null

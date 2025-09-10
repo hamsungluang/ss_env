@@ -14,7 +14,7 @@ session.headers.update({
 })
 
 # 深圳大学总医院
-url = "https://sugh.szu.edu.cn/Html/News/Columns/7/2.html"
+# url = "https://sugh.szu.edu.cn/Html/News/Columns/7/2.html"
 # 甘肃省发展和改革委员会
 # url = "https://fzgg.gansu.gov.cn/fzgg/tzgg/list.shtml"
 # 维普中文期刊服务平台
@@ -25,10 +25,12 @@ url = "https://sugh.szu.edu.cn/Html/News/Columns/7/2.html"
 # url = "https://tpass.tianjin.chinatax.gov.cn:8443/#/login"
 # 信用中国
 # url = "https://www.creditchina.gov.cn/"
-# 企业信用信息系统
+# 企业信用信息系统（有jsl）
 # url = "https://www.gsxt.gov.cn/"
 # 深圳市市场监督局（有jsl）
 # url = "https://amr.sz.gov.cn/outer/doublePublic/list.html"
+# 安徽电力交易(X)
+url = "https://pmos.ah.sgcc.com.cn:20080/#/outNet"
 
 parsed_url = urlparse(url)
 
@@ -37,6 +39,8 @@ def get_data_first():
     resp = session.get(url)
     resp.encoding = 'utf-8'
     logger.info("第一次请求：{}", resp.status_code)
+    with open("../../work/rs6.html", "w", encoding="utf-8") as f:
+        f.write(resp.text)  
     return resp.content
 
 
@@ -63,7 +67,7 @@ def get_cookie(content, script, ts_url):
     # logger.info(f"cookie: {result}")
     cookie_list = result.split(';')[0].split('=')
     cookie_name = cookie_list[0]
-    logger.info("cookie_name：>{}", cookie_name)
+    logger.info("cookie_name：{}", cookie_name)
     cookie_value = cookie_list[1]
     logger.info("cookie_value：{}", cookie_value)
     logger.info("cookie长度：{}", len(cookie_value))
@@ -75,7 +79,7 @@ def get_data_second(cookie_name, cookie_value):
     resp = session.get(url)
     resp.encoding = 'utf-8'
     logger.info("第二次请求：{}", resp.status_code)
-    logger.info(resp.text)
+    # logger.info(resp.text)
 
 
 def main():

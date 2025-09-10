@@ -197,7 +197,7 @@ Object.defineProperty(_base_dom, "innerText", {
             this
         );
         // 实际上是返回源代码
-        return "$_ts=window['$_ts'];";
+        return `$_ts=window['$_ts'];if(!$_ts)$_ts={};$_ts.nsd=35580;$_ts.cd="qoyxrrAloALlWkZmcqqtrGLoWkQEqqLmcGEcJaLrWkZcJGVBcqAPcGWRiGGqcGltrOq6cqqtrqLmWqVtqkqdrAGqcG3oWfV2ha9CoqLmDAGEqqLkcGqaJaGqJsEtcqqtqGLkWkQtq1ZtrcQtrsqdqGGqcGWtqkq6cGQaHZVtrcZvvuA0ruAuJdXvln_eaj4lmwS5IXD0OmVdT0hrnwbwnrzNJJKoUI_OMKhr4CfIJ8QXpxK3GUrFbaX7qGljqL3B1eyM8lNoFu3S_9N_VuxEJYCbwvxwQlyhHHqypDzX1UYe4bW4pop8HuX.V9g53TYeUeSMQlJ6FlNFN9aCs0zSs9HxKlRUYOSOUHSVMvRuJY0gZsE4WCwipvu6wbJCYlRrxteOisqaJOE9e6l4IUpHJCdsKkJGMKfPxteOisqaJOE9e6l4QofkIO4UYTYfi2J8xteOisqaJOE9e6l4wbmlW2ds1smc1Dm.xHwSiTrBUYy1jKYgYvEaROoEwOR9F0NpM77uQ97yFlfmZsETHKfG1CBViVeuJuxrsJxMF9NpwP9gdk7TJuWntKkXiY2XAuJ5VZTuFbp1Wn9gdk7TJuWntKkXi1g63ugnita6hbeSHoY7jurhpTwTp9kxFu7610zhAIfpsDN3H0qtvkErJrpBQ64zQsL0JuZTitL6JslSHsV_.sLaqurbHO5BWaW0Js3Ji_0TJkE4JuWy.a7CJkq0WkPNiOqYCvZ2N1rv.cz_TAveAuFSwfhwTAH1rE8V9aCFcx0oqGEmxTPKHXXzWEuhEPucvZXg.TjVkNT0HqZtwvp5jUecOB3ikuXjJuWaJsEdc_0EWsE6WsgujkqyJ19d3k.81lx7M9AaWZg7MOx3AOYJZlJcHmmbA6dpVsfQKvA5YMJlVDEuIbYMvAW0rkEDWEO0JULN3CR9xBSBQP2OwCabdomztKJSMPMd3C7N3DRuxBe.MP2GFvQbd6GntKl.RDBdhbJG3cz9Mde_hDRzFPzNZbSbMDV.Ro.zhbJCQ1z9887XRDpCtCJbZ1y9FDV.3CU5hbpj3UZ.MBxChDrBFnzBZv373o3.3vhghbRN3nzfRBgXRb20tCm2ZnybFbSutCunwPSPRbV.MIYzhDx.31zzynyLFUE.M6.zhbfS31zBIXTOQ6RT3nzOdb07MDS9tCHuRcS7MDg.3dJShDSnRPzO4b07MCJTtCkZwDlNFowPMMmLQDEXMUAbe6mBFny.MbPSMbePhbLuF4mB3UVXFbWd7KeN31yjMb8SMCzuhbNLM.mBM6WXFvQy7KeaW1yjwCXSM6rGR1zj8BLXMUYntCNyecyXMDg.FDO6hbeb8PzLMILXMC2GtCfb5cyBQKA.FouZhvr9Q1z6FISnhoYb31z_5bZ7wKz9t6.SFnSTMby0I.mnMbEXw6wv7UxawPy6w6_SQvrS8Pz68I9XQoaXw6yN7UJOFvVTt6B0RcS0wvZ.8HaXQbpBt6Y.4nyn3DV.wKdXhvxLhvYjIHZXQvm9t6Y5ZoE7wbr.t6v48PSCFb3.8IYOW12SFczy4Dg7wvpGt6vj3nSCwKl.88pShomOw1z5doG7QKYet640RcSSFCmfxX2zQvwvFUWb_URbtURdQnM.QKANwop0xXzSwn20ICWb_bJntUYbQ1MjRCxLhvrPFi0XwCfOt6rv_ny6Fbpft66nRD36hvr68Mm_3bGXICzy7UN7wvL.ICIShvfTMnzd8IlX8oZXI1zaeoEqqY0ORsnRU1pNFGJ3hB2.rmLb3b7E.uLcWkEDJGX7qGqmqGESij0nWqqSWOEn.AErJG";if($_ts.lcd)$_ts.lcd();`;
     },
     set: function () {
         h_log("_base_dom innerText set [call]", "arg:", arguments);
@@ -308,6 +308,7 @@ Object.defineProperty(_base_dom, "onchange", {
 Object.defineProperty(_base_dom, "onclick", {
     get: function () {
         h_log("_base_dom onclick get [call]", "arg:", arguments);
+        return null
     },
     set: function () {
         h_log("_base_dom onclick set [call]", "arg:", arguments);
@@ -557,7 +558,7 @@ Object.defineProperty(_base_dom, "onkeyup", {
 });
 Object.defineProperty(_base_dom, "onload", {
     get: function () {
-        h_log("_base_dom onload get [call]", "arg:", arguments);
+        h_log("_base_dom onload get [call]", "arg:", arguments, "this:", this.tag_arg);
     },
     set: function () {
         h_log("_base_dom onload set [call]", "arg:", arguments);
@@ -818,6 +819,7 @@ Object.defineProperty(_base_dom, "onstalled", {
 Object.defineProperty(_base_dom, "onsubmit", {
     get: function () {
         h_log("_base_dom onsubmit get [call]", "arg:", arguments);
+        return null
     },
     set: function () {
         h_log("_base_dom onsubmit set [call]", "arg:", arguments);
@@ -1389,7 +1391,9 @@ Object.defineProperty(_base_dom.__proto__, "localName", {
 });
 Object.defineProperty(_base_dom.__proto__, "tagName", {
     get: function () {
-        h_log("_base_dom.__proto__ tagName get [call]", "arg:", arguments);
+        const result = "BODY"
+        h_log("_base_dom.__proto__ tagName get [call]", "arg:", arguments, "this:", this, "result:", result);
+        return result
     },
     set: undefined,
     enumerable: true,
@@ -2305,21 +2309,15 @@ Object.defineProperty(_base_dom.__proto__, "getAttribute", {
             arguments
         );
         return function () {
+            const result = this[arguments[0]] === undefined ? null : this[arguments[0]]; result
             h_log(
                 "[v] _base_dom.__proto__ getAttribute value [call]",
                 "arg:",
                 arguments,
-                "this--->",
-                this
+                "this:",
+                this.tag_arg, "result:", result
             );
-            return this[arguments[0]] === undefined ? null : this[arguments[0]];
-            // if(this.tag_arg.includes("script")){
-            //     return "m"
-            // }
-            // else if(this.tag_arg.includes("meta")){
-            //     return "m"
-            // }
-            // return null
+            return result
         };
     },
     enumerable: true,
@@ -3132,8 +3130,9 @@ Object.defineProperty(_base_dom.__proto__.__proto__, "nodeType", {
         h_log(
             "_base_dom.__proto__.__proto__ nodeType get [call]",
             "arg:",
-            arguments
+            arguments, "this:", this
         );
+        return 3
     },
     set: undefined,
     enumerable: true,
@@ -3224,6 +3223,7 @@ Object.defineProperty(_base_dom.__proto__.__proto__, "childNodes", {
             "arg:",
             arguments
         );
+        return 1
     },
     set: undefined,
     enumerable: true,
@@ -3234,8 +3234,9 @@ Object.defineProperty(_base_dom.__proto__.__proto__, "firstChild", {
         h_log(
             "_base_dom.__proto__.__proto__ firstChild get [call]",
             "arg:",
-            arguments
+            arguments, "this:", this.tag_arg
         );
+        return this.tag_arg?this.tag_arg:null
     },
     set: undefined,
     enumerable: true,

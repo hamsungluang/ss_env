@@ -186,12 +186,9 @@ Object.defineProperty(_navigator.__proto__, "javaEnabled", {
     }, enumerable: true, configurable: true
 });
 Object.defineProperty(_navigator.__proto__, "sendBeacon", {
-    get: function () {
-        h_log("[v] _navigator.__proto__ sendBeacon value [get]", "arg:", arguments);
-        return function () {
-            h_log("[v] _navigator.__proto__ sendBeacon value [call]", "arg:", arguments)
-        }
-    }, enumerable: true, configurable: true
+    value: function () {
+        h_log("[v] _navigator.__proto__ sendBeacon value [call]", "arg:", arguments);
+    }, enumerable: true, configurable: true, writable: true
 });
 Object.defineProperty(_navigator.__proto__, "vibrate", {
     get: function () {

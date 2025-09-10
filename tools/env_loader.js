@@ -39,6 +39,7 @@ class EnvCodeLoader {
             "./env/bom/NavigatorUAData.js", // 用户代理数据API
             "./env/bom/StorageManager.js", // 存储管理API
             "./env/bom/BatteryManager.js", // 电池管理API
+            "./env/bom/chrome.js", // chrome对象
             "./env/bom/history.js", // History API
             "./env/bom/screen.js", // Screen API
             "./env/bom/plugins.js", // 插件API
@@ -110,8 +111,8 @@ class EnvCodeLoader {
      */
     load() {
         this.loadFramework(); // 加载框架代码
-        this.loadWorkScripts(); // 加载工作脚本
         this.wrapCode(); // 包装代码
+        this.loadWorkScripts(); // 加载工作脚本
         return this.code; // 返回最终的代码字符串
     }
    

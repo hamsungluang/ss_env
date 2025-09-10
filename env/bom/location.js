@@ -15,70 +15,79 @@ Object.defineProperty(_location, "ancestorOrigins", {
 });
 Object.defineProperty(_location, "href", {
     get: function () {
-        h_log("_location href get [call]", "arg:", arguments)
-        return config_LOCATION.href
+        const result = config_LOCATION.href
+        h_log("_location href get [call]", "arg:", arguments, "result:", result)
+        return result
     }, set: function () {
         h_log("_location href set [call]", "arg:", arguments)
     }, enumerable: true, configurable: false,
 });
 Object.defineProperty(_location, "origin", {
     get: function () {
-        h_log("_location origin get [call]", "arg:", arguments)
-        return config_LOCATION.origin
+        const result = config_LOCATION.origin
+        h_log("_location origin get [call]", "arg:", arguments, "result:", result)
+        return result
     }, set: undefined, enumerable: true, configurable: false,
 });
 Object.defineProperty(_location, "protocol", {
     get: function () {
-        h_log("_location protocol get [call]", "arg:", arguments)
-        return config_LOCATION.protocol
+        const result = config_LOCATION.protocol
+        h_log("_location protocol get [call]", "arg:", arguments, "result:", result)
+        return result
     }, set: function () {
         h_log("_location protocol set [call]", "arg:", arguments)
     }, enumerable: true, configurable: false,
 });
 Object.defineProperty(_location, "host", {
     get: function () {
-        h_log("_location host get [call]", "arg:", arguments)
-        return config_LOCATION.host
+        const result = config_LOCATION.host
+        h_log("_location host get [call]", "arg:", arguments, "result:", result)
+        return result
     }, set: function () {
         h_log("_location host set [call]", "arg:", arguments)
     }, enumerable: true, configurable: false,
 });
 Object.defineProperty(_location, "hostname", {
     get: function () {
-        h_log("_location hostname get [call]", "arg:", arguments)
-        return config_LOCATION.hostname
+        const result = config_LOCATION.hostname
+        h_log("_location hostname get [call]", "arg:", arguments, "result:", result)
+        return result
     }, set: function () {
         h_log("_location hostname set [call]", "arg:", arguments)
     }, enumerable: true, configurable: false,
 });
 Object.defineProperty(_location, "port", {
     get: function () {
-        h_log("_location port get [call]", "arg:", arguments)
-        return config_LOCATION.port
+        const result = config_LOCATION.port
+        h_log("_location port get [call]", "arg:", arguments, "result:", result)
+        return result
     }, set: function () {
         h_log("_location port set [call]", "arg:", arguments)
     }, enumerable: true, configurable: false,
 });
 Object.defineProperty(_location, "pathname", {
     get: function () {
-        h_log("_location pathname get [call]", "arg:", arguments)
-        return config_LOCATION.pathname
+        const result = config_LOCATION.pathname
+        h_log("_location pathname get [call]", "arg:", arguments, "result:", result)
+        return result
     }, set: function () {
         h_log("_location pathname set [call]", "arg:", arguments)
     }, enumerable: true, configurable: false,
 });
 Object.defineProperty(_location, "search", {
     get: function () {
-        h_log("_location search get [call]", "arg:", arguments)
-        return config_LOCATION.search
+        const result = config_LOCATION.search
+        h_log("_location search get [call]", "arg:", arguments, "result:", result)
+        return result
     }, set: function () {
         h_log("_location search set [call]", "arg:", arguments)
     }, enumerable: true, configurable: false,
 });
 Object.defineProperty(_location, "hash", {
     get: function () {
-        h_log("_location hash get [call]", "arg:", arguments)
-        return config_LOCATION.hash
+        const result = config_LOCATION.hash
+        h_log("_location hash get [call]", "arg:", arguments, "result:", result)
+        return result
     }, set: function () {
         h_log("_location hash set [call]", "arg:", arguments)
     }, enumerable: true, configurable: false,
@@ -112,11 +121,12 @@ Object.defineProperty(_location, "toString", {
         h_log("[v] _location toString value [get]", "arg:", arguments);
         return function () {
             h_log("[v] _location toString value [call]", "arg:", arguments)
+            return config_LOCATION.href  
         }
     }, enumerable: true, configurable: false
 });
 Object.defineProperty(_location, Symbol.toPrimitive, {
-    value: undefined,
+    value: config_LOCATION.href ,
     writable: false,
     enumerable: false,
     configurable: false,

@@ -8,9 +8,9 @@ const hook_ObjectKeys = config_config.hook_ObjectKeys;
 
 if (hook_ObjectKeys) {
   let _lp_obj_keys = Object.assign(Object.keys);
-  Object.keys = function () {
+  Object.keys = function (obj) {
     h_log("Object keys 被调用","对象为：" , arguments);
-    return _lp_obj_keys.apply(undefined,arguments);
+    return _lp_obj_keys(obj);
   };
 }
 

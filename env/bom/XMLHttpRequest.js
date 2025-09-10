@@ -10,4 +10,4 @@ _XMLHttpRequest.prototype = {
     },
     [Symbol.toStringTag]: "XMLHttpRequest"
 }
-_XMLHttpRequest.prototype = ProxyObj(_XMLHttpRequest.prototype, "_XMLHttpRequest.prototype")
+_XMLHttpRequest = ProxyObj(_XMLHttpRequest, "_XMLHttpRequest")

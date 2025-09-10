@@ -197,10 +197,7 @@ Object.defineProperty(window, "setInterval", {
 });
 
 Object.defineProperty(window, "XMLHttpRequest", {
-    get: function () {
-        h_log("[v] window XMLHttpRequest value [get]", "arg:", arguments);
-        return _XMLHttpRequest
-    }, enumerable: false, configurable: true
+    value: _XMLHttpRequest, enumerable: false, configurable: true, writable: true
 });
 
 Object.defineProperty(window, "XMLDocument", {
@@ -252,10 +249,7 @@ Object.defineProperty(window, "WheelEvent", {
     }, enumerable: false, configurable: true
 });
 Object.defineProperty(window, "WebSocket", {
-    get: function () {
-        h_log("[v] window WebSocket value [get]", "arg:", arguments);
-        return _WebSocket
-    }, enumerable: false, configurable: true
+    value: _WebSocket, enumerable: false, configurable: true, writable: true
 });
 Object.defineProperty(window, "WebGLVertexArrayObject", {
     get: function () {
@@ -1708,10 +1702,7 @@ Object.defineProperty(window, "ResizeObserver", {
     }, enumerable: false, configurable: true
 });
 Object.defineProperty(window, "Request", {
-    get: function () {
-        h_log("[v] window Request value [get]", "arg:", arguments);
-        return _Request
-    }, enumerable: false, configurable: true
+    value: _Request, enumerable: false, configurable: true, writable: true
 });
 Object.defineProperty(window, "ReportingObserver", {
     get: function () {
@@ -4333,7 +4324,7 @@ Object.defineProperty(window, "CSSConditionRule", {
         }
     }, enumerable: false, configurable: true
 });
-Object.defineProperty(window, "CSS", {value: {}, writable: true, enumerable: false, configurable: true,});
+Object.defineProperty(window, "CSS", {value: ProxyObj({}, "CSS"), writable: true, enumerable: false, configurable: true,});
 Object.defineProperty(window, "CDATASection", {
     get: function () {
         h_log("[v] window CDATASection value [get]", "arg:", arguments);
@@ -4597,10 +4588,10 @@ Object.defineProperty(window, "document", {
         return _document
     }, set: undefined, enumerable: true, configurable: false,
 });
-let window_name = "$_YWTU=TiQM0n3RJxDKSD3ffuyLumzWieu3QQaE3z_2EjyEM_A&$_YVTX=Wq&vdFm="
+let window_name = ""
 Object.defineProperty(window, "name", {
     get: function () {
-        h_log("window name get [call]", "arg:", arguments)
+        h_log("window name get [call]", "arg:", arguments, "result:", window_name)
         return window_name
     }, set: function () {
         h_log("window name set [call]", "arg:", arguments)
@@ -4711,7 +4702,7 @@ Object.defineProperty(window, "top", {
         if (config_LOCATION.href === "about:blank"){
             return window_top
         }
-        return globalThis
+        return window
     }, set: undefined, enumerable: true, configurable: false,
 });
 Object.defineProperty(window, "opener", {
@@ -4806,7 +4797,7 @@ Object.defineProperty(window, "screen", {
 Object.defineProperty(window, "innerWidth", {
     get: function () {
         h_log("window innerWidth get [call]", "arg:", arguments)
-        return 0
+        return 1536
     }, set: function () {
         h_log("window innerWidth set [call]", "arg:", arguments)
     }, enumerable: true, configurable: true,
@@ -4814,7 +4805,7 @@ Object.defineProperty(window, "innerWidth", {
 Object.defineProperty(window, "innerHeight", {
     get: function () {
         h_log("window innerHeight get [call]", "arg:", arguments)
-        return 0
+        return 695
     }, set: function () {
         h_log("window innerHeight set [call]", "arg:", arguments)
     }, enumerable: true, configurable: true,
@@ -5849,12 +5840,9 @@ Object.defineProperty(window, "captureEvents", {
     }, enumerable: true, configurable: true
 });
 Object.defineProperty(window, "clearInterval", {
-    get: function () {
-        h_log("[v] window clearInterval value [get]", "arg:", arguments);
-        return function () {
+    value: function () {
             h_log("[v] window clearInterval value [call]", "arg:", arguments)
-        }
-    }, enumerable: true, configurable: true
+    }, enumerable: true, configurable: true, writable: true
 });
 Object.defineProperty(window, "clearTimeout", {
     get: function () {
@@ -5889,12 +5877,9 @@ Object.defineProperty(window, "createImageBitmap", {
     }, enumerable: true, configurable: true
 });
 Object.defineProperty(window, "fetch", {
-    get: function () {
-        h_log("[v] window fetch value [get]", "arg:", arguments);
-        return function () {
-            h_log("[v] window fetch value [call]", "arg:", arguments)
-        }
-    }, enumerable: true, configurable: true
+    value: function () {
+        h_log("[v] window fetch value [call]", "arg:", arguments)
+    }, enumerable: true, configurable: true, writable: true
 });
 Object.defineProperty(window, "find", {
     get: function () {
@@ -6103,7 +6088,7 @@ Object.defineProperty(window, "webkitRequestAnimationFrame", {
         }
     }, enumerable: true, configurable: true
 });
-Object.defineProperty(window, "chrome", {value: {}, writable: true, enumerable: true, configurable: false,});
+Object.defineProperty(window, "chrome", {value: _chrome, writable: true, enumerable: true, configurable: false,});
 window.WebAssembly = WebAssembly;
 Object.defineProperty(window, "fence", {
     get: function () {
@@ -8500,3 +8485,7 @@ Object.defineProperty(window.__proto__.__proto__, Symbol.toStringTag, {
     configurable: true,
 });
 window.__proto__.__proto__.__proto__ = eventTarget;
+
+if (config_config.proxy_obj) {
+    window = ProxyObj(window, "window", true)
+}

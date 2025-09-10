@@ -16,30 +16,6 @@ Object.defineProperty(document_all, 1, {
   configurable: false,
   enumerable: true,
 });
-Object.defineProperty(document_all, 2, {
-  get: function () {
-    console.log("document_all 1 get [call]", "arg:", arguments);
-    return {}   
-  },
-  configurable: false,
-  enumerable: true,
-});
-Object.defineProperty(document_all, 3, {
-  get: function () {
-    console.log("document_all 1 get [call]", "arg:", arguments);
-    return {}   
-  },
-  configurable: false,
-  enumerable: true,
-});
-Object.defineProperty(document_all, 4, {
-  get: function () {
-    console.log("document_all 1 get [call]", "arg:", arguments);
-    return {}   
-  },
-  configurable: false,
-  enumerable: true,
-});
 document_all.__proto__ = {};
 Object.defineProperty(document_all.__proto__, "length", {
   get: function () {
